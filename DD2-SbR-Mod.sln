@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{43B25BF3-EEC2-4892-8171-1C36282953EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DD2-SbR-Mod", "DD2-SbR-Mod\DD2-SbR-Mod.csproj", "{43B25BF3-EEC2-4892-8171-1C36282953EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
