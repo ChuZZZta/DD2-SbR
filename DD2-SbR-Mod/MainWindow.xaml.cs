@@ -42,14 +42,14 @@ namespace WpfApp1
             }
         }
 
-        private void selectJson(object sender, RoutedEventArgs e)
+        private void SelectJson(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
                 path.Text = openFileDialog.FileName;
         }
 
-        private void loadConfig(object sender, RoutedEventArgs e)
+        private void LoadConfig(object sender, RoutedEventArgs e)
         {
             StreamReader sr = new StreamReader(path.Text);
             String json = sr.ReadToEnd();
@@ -72,7 +72,7 @@ namespace WpfApp1
             debug.Text = "";
                 foreach (Car car in cars)
                 {
-                    car.readMemory();
+                    car.Update(byte.Parse(lapnumber.Text), lapnumbercheck.IsChecked.Value);
                 }
                 for (int i = 0; i < 20; i++)
                 {

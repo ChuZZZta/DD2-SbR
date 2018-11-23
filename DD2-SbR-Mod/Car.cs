@@ -26,12 +26,22 @@ namespace WpfApp1
         public int[,] times = new int[2, 100];
         public int besttime = 0;
         public static int[] positions = new int[20];
-        public void readMemory()
+
+        public void Update(byte SetLap, bool config)
         {
             MemoryRW rw = new MemoryRW(processname);
-            lapnumber = rw.getByte(memoryaddr);
-            position = rw.getByte(memoryaddr - 0x6);
-            positions[position - 1] = id;
+            if (config)
+            {
+                rw.SetByte(memoryaddr, SetLap);
+                rw.SetByte(memoryaddr-0x6, 1);
+            }
+            else
+            {
+                lapnumber = rw.GetByte(memoryaddr);
+                position = rw.GetByte(memoryaddr - 0x6);
+                positions[position - 1] = id;
+            }
         }
+
     }
 }
