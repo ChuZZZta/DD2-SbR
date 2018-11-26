@@ -36,6 +36,10 @@ namespace WpfApp1
         {
             Process[] processes = Process.GetProcesses();
             processes = processes.Where(x => x.SessionId != 0).ToArray();
+            /// JĘDRZEJA PRZYKŁAD :OOO
+           // cars = cars.OrderByDescending(x => x.id).ThenBy(x => x.number).ToArray();
+           // cars.Select(x => new Tuple(x.name, x.picture)).ToArray();
+            //
             foreach (Process process in processes)
             {
                 processesList.Items.Add(process.ProcessName);
@@ -76,7 +80,7 @@ namespace WpfApp1
                 }
                 for (int i = 0; i < 20; i++)
                 {
-                    debug.Text = debug.Text + " "+ (i+1) +". " + cars[Car.positions[i]].number + " " + cars[Car.positions[i]].name + " ||| LAP: " + cars[Car.positions[i]].lapnumber+"\n";
+                    debug.Text = debug.Text + " "+ (i+1) +". " + cars[Car.positions[i].id].number + " " + cars[Car.positions[i].id].name + " ||| LAP: " + cars[Car.positions[i].id].lapnumber+"\n";
                 }
                 
             

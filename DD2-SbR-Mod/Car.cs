@@ -25,7 +25,7 @@ namespace WpfApp1
         public int position = 1;
         public int[,] times = new int[2, 100];
         public int besttime = 0;
-        public static int[] positions = new int[20];
+        public static Car[] positions = new Car[20];
 
         public void Update(byte SetLap, bool config)
         {
@@ -39,7 +39,7 @@ namespace WpfApp1
             {
                 lapnumber = rw.GetByte(memoryaddr);
                 position = rw.GetByte(memoryaddr - 0x6);
-                positions[position - 1] = id;
+                positions[position - 1] = this;
             }
         }
 
