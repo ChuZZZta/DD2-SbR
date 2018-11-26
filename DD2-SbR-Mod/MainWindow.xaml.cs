@@ -20,9 +20,6 @@ using System.Windows.Threading;
 
 namespace WpfApp1
 {
-    /// <summary>
-    /// Logika interakcji dla klasy MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -36,10 +33,6 @@ namespace WpfApp1
         {
             Process[] processes = Process.GetProcesses();
             processes = processes.Where(x => x.SessionId != 0).ToArray();
-            /// JĘDRZEJA PRZYKŁAD :OOO
-           // cars = cars.OrderByDescending(x => x.id).ThenBy(x => x.number).ToArray();
-           // cars.Select(x => new Tuple(x.name, x.picture)).ToArray();
-            //
             foreach (Process process in processes)
             {
                 processesList.Items.Add(process.ProcessName);
@@ -62,12 +55,6 @@ namespace WpfApp1
             {
                 car.processname = processesList.SelectedItem.ToString();
             }
-            // cars[0].readMemory();
-            //debug.Text = cars[0].lapnumber.ToString();
-            //debug.Text = "1. " + cars[Car.positions[0]].number + "lap: " + cars[Car.positions[0]].lapnumber;
-            //MemoryRW mr = new MemoryRW(processesList.SelectedItem.ToString());
-            //debug.Text = processesList.SelectedItem.ToString();
-            //debug.Text = mr.getByte(0x00030326).ToString();
             dt.Start();
         }
 
@@ -78,9 +65,17 @@ namespace WpfApp1
                 {
                     car.Update(byte.Parse(lapnumber.Text), lapnumbercheck.IsChecked.Value);
                 }
+                if(lapnumbercheck.IsChecked.Value)
+                {
+                    cars = cars.OrderByDescending(x=>x.lapnumber).ThenBy(x => x.position).ToArray();
+                }
+                else
+                {
+                    cars = cars.OrderBy(x=>x.position).ToArray();
+                }
                 for (int i = 0; i < 20; i++)
                 {
-                    debug.Text = debug.Text + " "+ (i+1) +". " + cars[Car.positions[i].id].number + " " + cars[Car.positions[i].id].name + " ||| LAP: " + cars[Car.positions[i].id].lapnumber+"\n";
+                  debug.Text = debug.Text + " "+ (i+1) +". " + cars[i].number + " " + cars[i].name + " ||| LAP: " + cars[i].lapnumber+"\n";
                 }
                 
             

@@ -25,21 +25,27 @@ namespace WpfApp1
         public int position = 1;
         public int[,] times = new int[2, 100];
         public int besttime = 0;
-        public static Car[] positions = new Car[20];
 
         public void Update(byte SetLap, bool config)
         {
             MemoryRW rw = new MemoryRW(processname);
             if (config)
             {
-                rw.SetByte(memoryaddr, SetLap);
-                rw.SetByte(memoryaddr-0x6, 1);
+                position = rw.GetByte(memoryaddr - 0x6);
+                if( rw.GetByte(memoryaddr) > 1 && lapnumber != SetLap)
+                    {
+                        lapnumber++;
+                        rw.SetByte(memoryaddr, 1);
+                    }
+                if(lapnumber == SetLap)
+                    {
+                        rw.SetByte(memoryaddr, 99);
+                    }
             }
             else
             {
                 lapnumber = rw.GetByte(memoryaddr);
                 position = rw.GetByte(memoryaddr - 0x6);
-                positions[position - 1] = this;
             }
         }
 
