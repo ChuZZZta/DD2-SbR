@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sbr
 {
-    class Map
+    public class Map
     {
         [JsonProperty("Id")]
         public int Id { get; set; }
@@ -16,14 +16,6 @@ namespace Sbr
         [JsonProperty("Lenght")]
         public int Lenght { get; set; }
         [JsonProperty("LapsNumber")]
-        public int LapsNumber { get; set; }
-        Map(int id,string name,int maplenght,int lapnumber)
-        {
-            Id = id;
-            MapName = name;
-            Lenght = maplenght;
-            LapsNumber = lapnumber;
-        }
-       
+        public int LapsNumber { get; set; }       
     }
 }

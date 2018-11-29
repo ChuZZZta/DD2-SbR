@@ -38,12 +38,7 @@ namespace Sbr
                 processesList.Items.Add(process.ProcessName);
             }
         }
-
-        private void GetTrackNames()
-        {
-
-        }
-
+         
         private void SelectJson(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -63,26 +58,40 @@ namespace Sbr
             dt.Start();
         }
 
+
+        Map[] maps = new Map[7];
+        private void GetTrackNames()
+        {
+            //REPLACE THIS STRING IN FINAL RELEASE!!!
+            StreamReader sr = new StreamReader("C:\\Users\\ChuZZZta\\source\\Repos\\Destruction-Derby-2-Scoreboard-Race-Mod\\DD2-SbR-Mod\\Resources\\MapsInfo.json");
+            String json = sr.ReadToEnd();
+            maps = JsonConvert.DeserializeObject<Map[]>(json);
+            foreach (Map map in maps)
+            {
+                maplist.Items.Add(map);
+            }
+        }
+
         public Car[] cars = new Car[20];
         private void UpdateScore(object sender, EventArgs e)
         {
             debug.Text = "";
-                foreach (Car car in cars)
-                {
-                    car.Update(byte.Parse(lapnumber.Text), lapnumbercheck.IsChecked.Value);
-                }
-                if(lapnumbercheck.IsChecked.Value)
-                {
-                    cars = cars.OrderByDescending(x=>x.lapnumber).ThenBy(x => x.position).ToArray();
-                }
-                else
-                {
-                    cars = cars.OrderBy(x=>x.position).ToArray();
-                }
-                for (int i = 0; i < 20; i++)
-                {
-                  debug.Text = debug.Text + " "+ (i+1) +". " + cars[i].Number + " " + cars[i].Name + " ||| LAP: " + cars[i].lapnumber+"\n";
-                }
+            foreach (Car car in cars)
+            {
+                car.Update(byte.Parse(lapnumber.Text), lapnumbercheck.IsChecked.Value, (Map)maplist.SelectedItem);
+            }
+            if(lapnumbercheck.IsChecked.Value)
+            {
+                cars = cars.OrderByDescending(x=>x.lapnumber).ThenBy(x => x.position).ToArray();
+            }
+            else
+            {
+                cars = cars.OrderBy(x=>x.position).ToArray();
+            }
+            for (int i = 0; i < 20; i++)
+            {
+                debug.Text = debug.Text + " " + (i + 1) + ". " + cars[i].Number + " " + cars[i].Name + " ||| LAP: " + cars[i].lapnumber + "\n";
+            }
                 
             
         }

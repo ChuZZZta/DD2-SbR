@@ -26,7 +26,7 @@ namespace Sbr
         public int position = 1;
         List<int> laptimes = new List<int>();
 
-        public void Update(byte SetLap, bool config)
+        public void Update(byte SetLap, bool config, Map map)
         {
             IMemoryRW rw = new MemoryRW(Processname);
             if (config)
@@ -39,7 +39,7 @@ namespace Sbr
                     }
                 if(lapnumber == SetLap)
                     {
-                        rw.SetByte(MemoryAddr, 99);
+                        rw.SetByte(MemoryAddr, (byte)map.LapsNumber);
                     }
             }
             else
