@@ -18,7 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
-namespace WpfApp1
+namespace Sbr
 {
     public partial class MainWindow : Window
     {
@@ -53,7 +53,7 @@ namespace WpfApp1
             cars = JsonConvert.DeserializeObject<Car[]>(json);
             foreach (Car car in cars)
             {
-                car.processname = processesList.SelectedItem.ToString();
+                car.Processname = processesList.SelectedItem.ToString();
             }
             dt.Start();
         }
@@ -75,7 +75,7 @@ namespace WpfApp1
                 }
                 for (int i = 0; i < 20; i++)
                 {
-                  debug.Text = debug.Text + " "+ (i+1) +". " + cars[i].number + " " + cars[i].name + " ||| LAP: " + cars[i].lapnumber+"\n";
+                  debug.Text = debug.Text + " "+ (i+1) +". " + cars[i].Number + " " + cars[i].Name + " ||| LAP: " + cars[i].lapnumber+"\n";
                 }
                 
             
@@ -83,8 +83,10 @@ namespace WpfApp1
         DispatcherTimer dt;
         private void RefreshScore(object sender, RoutedEventArgs e)
         {
-            dt = new DispatcherTimer();
-            dt.Interval = TimeSpan.FromSeconds(1);
+            dt = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(1)
+            };
             dt.Tick += UpdateScore;
         }
     }

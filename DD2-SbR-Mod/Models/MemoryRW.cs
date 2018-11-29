@@ -5,16 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using Sbr;
 
-namespace WpfApp1
+namespace Sbr
 {
-    public class MemoryRW
+    public class MemoryRW : IMemoryRW
     {
         public MemoryRW(string processname)
         {
             this.processname = processname;
         }
-        string processname;
+
+        readonly string processname;
 
         [DllImport("kernel32.dll")]
         public static extern IntPtr OpenProcess(int dwDesiredAccess, bool bInheritHandle, int dwProcessId);
