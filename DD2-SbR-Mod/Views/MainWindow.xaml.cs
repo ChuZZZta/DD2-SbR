@@ -26,9 +26,9 @@ namespace Sbr
         {
             InitializeComponent();
             GetRunningProcesses();
+            GetTrackNames();
         }
-        public Car[] cars = new Car[20];
-
+        
         private void GetRunningProcesses()
         {
             Process[] processes = Process.GetProcesses();
@@ -39,6 +39,11 @@ namespace Sbr
             }
         }
 
+        private void GetTrackNames()
+        {
+
+        }
+
         private void SelectJson(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -46,18 +51,19 @@ namespace Sbr
                 path.Text = openFileDialog.FileName;
         }
 
+
+
+        //move that code to viewmodels
         private void LoadConfig(object sender, RoutedEventArgs e)
         {
             StreamReader sr = new StreamReader(path.Text);
             String json = sr.ReadToEnd();
             cars = JsonConvert.DeserializeObject<Car[]>(json);
-            foreach (Car car in cars)
-            {
-                car.Processname = processesList.SelectedItem.ToString();
-            }
+            foreach (Car car in cars) car.Processname = processesList.SelectedItem.ToString();
             dt.Start();
         }
 
+        public Car[] cars = new Car[20];
         private void UpdateScore(object sender, EventArgs e)
         {
             debug.Text = "";

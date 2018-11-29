@@ -70,6 +70,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\Car.cs" />
+    <Compile Include="Models\Map.cs" />
     <Compile Include="Models\IMemoryRW.cs" />
     <Compile Include="ViewModels\LoadConfig.cs" />
     <Compile Include="ViewModels\UpdateScore.cs" />
@@ -103,6 +104,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Resources\MapsInfo.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

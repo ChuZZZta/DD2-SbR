@@ -1,0 +1,44 @@
+[
+  {
+    "Id" : 1,
+    "MapName": "Pine Hills Raceway",
+    "LapsNumber": 10,
+    "Lenght": 4337
+  },
+  {
+    "Id": 2,
+    "MapName": "Chalk Canyon",
+    "LapsNumber": 5,
+    "Lenght": 7090
+  },
+  {
+    "Id": 3,
+    "MapName": "S.C.A. Motorplex",
+    "LapsNumber": 5,
+    "Lenght": 4475
+  },
+  {
+    "Id": 4,
+    "MapName": "Caprio County Raceway",
+    "LapsNumber": 8,
+    "Lenght": 3788
+  },
+  {
+    "Id": 5,
+    "MapName": "Black Sail Valley",
+    "LapsNumber": 5,
+    "Lenght": 6377
+  },
+  {
+    "Id": 6,
+    "MapName": "Liberty City",
+    "LapsNumber": 7,
+    "Lenght": 4475
+  },
+  {
+    "Id": 7,
+    "MapName": "Ultimate Destruction",
+    "LapsNumber": 5,
+    "Lenght": 7533
+  }
+]

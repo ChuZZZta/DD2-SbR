@@ -15,8 +15,7 @@ namespace Sbr
         {
             this.processname = processname;
         }
-
-        readonly string processname;
+        string processname;
 
         [DllImport("kernel32.dll")]
         public static extern IntPtr OpenProcess(int dwDesiredAccess, bool bInheritHandle, int dwProcessId);
