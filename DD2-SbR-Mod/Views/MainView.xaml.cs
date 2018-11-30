@@ -20,9 +20,9 @@ using System.Windows.Threading;
 
 namespace Sbr
 {
-    public partial class MainWindow : Window
+    public partial class MainView : Window
     {
-        public MainWindow()
+        public MainView()
         {
             InitializeComponent();
             GetRunningProcesses();
