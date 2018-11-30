@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sbr"
         mc:Ignorable="d"
-        Title="Destruction Derby 2 Scoreboard and lap mod" Height="661.412" Width="719.328" Background="White" Loaded="RefreshScore">
+        Title="Destruction Derby 2 Scoreboard and lap mod" Height="661.412" Width="719.328" Background="White">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="107*"/>
@@ -17,7 +17,7 @@
         <TextBox x:Name="path" HorizontalAlignment="Left" Height="20" Margin="0,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="548" IsEnabled="False" Text="Select json file" Grid.Column="3"/>
 
         <TextBlock x:Name="debug" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="585" Width="548" Margin="0,35,0,0" Background="#FFF1F1BB" Grid.Column="3"><Run Text="TextBlock"/></TextBlock>
-        <Button x:Name="loadconfig" Content="Load Config" HorizontalAlignment="Left" Margin="10,304,0,0" VerticalAlignment="Top" Width="133" Click="LoadConfig" Height="34" Grid.ColumnSpan="2"/>
+        <Button x:Name="loadconfig" Content="Load Config" HorizontalAlignment="Left" Margin="10,304,0,0" VerticalAlignment="Top" Width="133" Height="34" Grid.ColumnSpan="2"/>
         <ListBox x:Name="processesList" HorizontalAlignment="Left" Height="264" Margin="10,35,0,0" VerticalAlignment="Top" Width="133" Grid.ColumnSpan="2"/>
         <TextBox x:Name="lapnumber" Height="22" Margin="10,376,75,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
         <CheckBox x:Name="lapnumbercheck" Content="Lap Mod" HorizontalAlignment="Left" Margin="10,357,0,0" VerticalAlignment="Top" Height="14" RenderTransformOrigin="0.488,0.913" Grid.ColumnSpan="2" Width="123"/>
