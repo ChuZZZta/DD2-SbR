@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sbr
+namespace Sbr.Models
 {
     public class Car
     {

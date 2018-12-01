@@ -8,20 +8,21 @@
         Title="Destruction Derby 2 Scoreboard and lap mod" Height="661.412" Width="719.328" Background="White">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="107*"/>
+            <ColumnDefinition Width="84*"/>
+            <ColumnDefinition Width="23*"/>
             <ColumnDefinition Width="41*"/>
             <ColumnDefinition Width="7*"/>
             <ColumnDefinition Width="556*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="browse" Content="Browse" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="133" Click="SelectJson" Grid.ColumnSpan="2" Height="20"/>
-        <TextBox x:Name="path" HorizontalAlignment="Left" Height="20" Margin="0,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="548" IsEnabled="False" Text="Select json file" Grid.Column="3"/>
+        <Button x:Name="browse" Content="Browse" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="133" Click="SelectJson" Grid.ColumnSpan="3" Height="20"/>
+        <TextBox x:Name="path" HorizontalAlignment="Left" Height="20" Margin="0,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="548" IsEnabled="False" Text="Select json file" Grid.Column="4"/>
 
-        <TextBlock x:Name="debug" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="585" Width="548" Margin="0,35,0,0" Background="#FFF1F1BB" Grid.Column="3"><Run Text="TextBlock"/></TextBlock>
-        <Button x:Name="loadconfig" Content="Load Config" HorizontalAlignment="Left" Margin="10,304,0,0" VerticalAlignment="Top" Width="133" Height="34" Grid.ColumnSpan="2"/>
-        <ListBox x:Name="processesList" HorizontalAlignment="Left" Height="264" Margin="10,35,0,0" VerticalAlignment="Top" Width="133" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="lapnumber" Height="22" Margin="10,376,75,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="lapnumbercheck" Content="Lap Mod" HorizontalAlignment="Left" Margin="10,357,0,0" VerticalAlignment="Top" Height="14" RenderTransformOrigin="0.488,0.913" Grid.ColumnSpan="2" Width="123"/>
-        <ComboBox x:Name="maplist" DisplayMemberPath="MapName" HorizontalAlignment="Right" Margin="0,376,5,0" VerticalAlignment="Top" Width="106" Grid.ColumnSpan="2" Height="22"/>
-        <CheckBox Content="Ingame Overlay &#xD;&#xA;(only DOSBox &#xD;&#xA;supported)" HorizontalAlignment="Left" Margin="11,421,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="134" Height="51"/>
+        <TextBlock x:Name="debug" Text="fsdfsd" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="585" Width="548" Margin="0,35,0,0" Background="#FFF1F1BB" Grid.Column="4" ></TextBlock>
+        <Button x:Name="loadconfig" Content="Load Config" HorizontalAlignment="Left" Margin="10,304,0,0" VerticalAlignment="Top" Width="133" Height="34" Grid.ColumnSpan="3"/>
+        <ListBox x:Name="processesList" HorizontalAlignment="Left" Height="264" Margin="10,35,0,0" VerticalAlignment="Top" Width="133" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="lapnumber" Height="22" Margin="10,376,52.03,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="lapnumbercheck" Content="Lap Mod" HorizontalAlignment="Left" Margin="10,357,0,0" VerticalAlignment="Top" Height="14" RenderTransformOrigin="0.488,0.913" Grid.ColumnSpan="3" Width="123"/>
+        <ComboBox x:Name="maplist" DisplayMemberPath="MapName" HorizontalAlignment="Right" Margin="0,376,5,0" VerticalAlignment="Top" Width="106" Grid.ColumnSpan="3" Height="22"/>
+        <CheckBox Content="Ingame Overlay &#xD;&#xA;(only DOSBox &#xD;&#xA;supported)" HorizontalAlignment="Left" Margin="11,421,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="134" Height="51"/>
     </Grid>
 </Window>

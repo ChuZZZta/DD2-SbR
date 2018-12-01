@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Sbr.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -7,9 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Threading;
 
-namespace Sbr
+namespace Sbr.ViewModels
 {
     public class MainViewModel
     {
@@ -17,7 +19,11 @@ namespace Sbr
         {
 
         }
+        //test
 
+    
+
+        //test
         new List<string> ProcessesList = new List<string>();
         new List<Map> MapList = new List<Map>();
         
@@ -25,7 +31,7 @@ namespace Sbr
         public Car[] Cars = new Car[20];
 
         string JsonDriversPath = "";
-        string DebugBox = "";
+        string DebugBox = "czy dziala bind";
         string SelectedProcess = "";
 
         bool LapModeActive = false;

@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Sbr;
 
-namespace Sbr
+namespace Sbr.Models
 {
     public class MemoryRW : IMemoryRW
     {
