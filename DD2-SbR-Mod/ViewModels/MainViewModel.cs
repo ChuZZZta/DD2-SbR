@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Win32;
+using Newtonsoft.Json;
 using Sbr.Models;
 using System;
 using System.Collections.Generic;
@@ -19,11 +20,7 @@ namespace Sbr.ViewModels
         {
 
         }
-        //test
-
-    
-
-        //test
+        
         new List<string> ProcessesList = new List<string>();
         new List<Map> MapList = new List<Map>();
         
@@ -31,12 +28,20 @@ namespace Sbr.ViewModels
         public Car[] Cars = new Car[20];
 
         string JsonDriversPath = "";
+        string JsonMapsPath = "";
         string DebugBox = "czy dziala bind";
         string SelectedProcess = "";
 
         bool LapModeActive = false;
         byte LapLimit = 0;
         Map SelectedMap;
+
+        private void SelectJson(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+                JsonDriversPath = openFileDialog.FileName;
+        }
 
         private void GetRunningProcesses()
         {
@@ -61,7 +66,7 @@ namespace Sbr.ViewModels
         private void GetTrackNames()
         {
             //REPLACE THIS STRING IN FINAL RELEASE!!!
-            StreamReader sr = new StreamReader("C:\\Users\\ChuZZZta\\source\\Repos\\Destruction-Derby-2-Scoreboard-Race-Mod\\DD2-SbR-Mod\\Resources\\MapsInfo.json");
+            StreamReader sr = new StreamReader(JsonMapsPath);
             String json = sr.ReadToEnd();
             Maps = JsonConvert.DeserializeObject<Map[]>(json);
             foreach (Map map in Maps)
