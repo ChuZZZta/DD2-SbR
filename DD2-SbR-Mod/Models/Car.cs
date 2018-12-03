@@ -48,6 +48,10 @@ namespace Sbr.Models
                 position = rw.GetByte(MemoryAddr - 0x6);
             }
         }
+        public override string ToString()
+        {
+            return Name+" " + Number + ", lap number: "+lapnumber;
+        }
 
     }
 }

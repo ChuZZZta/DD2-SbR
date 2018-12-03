@@ -1,11 +1,15 @@
-﻿<Window x:Class="Sbr.MainView"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sbr"
+        xmlns:ViewModels="clr-namespace:Sbr.ViewModels" x:Class="Sbr.MainView"
         mc:Ignorable="d"
         Title="Destruction Derby 2 Scoreboard And Lap Mod" Height="800" Width="750" Background="White" ResizeMode="NoResize">
+    <Window.DataContext>
+        <ViewModels:MainViewModel/>
+    </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
@@ -22,17 +26,17 @@
                 <RowDefinition Height="375"/>
             </Grid.RowDefinitions>
 
-            <Button x:Name="browse" Content="Browse" HorizontalAlignment="Center" VerticalAlignment="Center" Width="140" Height="20"  Grid.Row="0"/>
-            <ListBox x:Name="processesList" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="140" Height="180" Grid.Row="1"/>
-            <Button x:Name="loadconfig" Content="Load Config" HorizontalAlignment="Center" VerticalAlignment="Center" Width="140" Height="30" Grid.Row="2"/>
+            <Button x:Name="browse" Command="{Binding SelectJsonCommand}" Content="Browse" HorizontalAlignment="Center" VerticalAlignment="Center" Width="140" Height="20"  Grid.Row="0"/>
+            <ListBox x:Name="processesList" SelectedItem="{Binding SelectedProcess}" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="140" Height="180" Grid.Row="1" ItemsSource="{Binding ProcessesList}"/>
+            <Button x:Name="loadconfig" Command="{Binding LoadConfigCommand}" Content="Load Config" HorizontalAlignment="Center" VerticalAlignment="Center" Width="140" Height="30" Grid.Row="2"/>
             <Label Content="Mod Options:" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3"/>
 
 
-            <CheckBox x:Name="lapnumbercheck" Content="Lap Mod" HorizontalAlignment="Left" VerticalAlignment="Top" Height="15" Width="100" Margin="5,0,0,0"  Grid.Row="4"/>
-            <TextBox x:Name="lapnumber" Height="20" Width="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="5,0,0,0" Text="0"  Grid.Row="4"/>
-            <ComboBox x:Name="maplist" DisplayMemberPath="MapName"  HorizontalAlignment="Right" VerticalAlignment="Bottom"  Width="110" Height="20" Margin="0,0,5,0"  Grid.Row="4"/>
+            <CheckBox x:Name="lapnumbercheck" IsChecked="{Binding LapModeActive, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True}" Content="Lap Mod" HorizontalAlignment="Left" VerticalAlignment="Top" Height="15" Width="100" Margin="5,0,0,0"  Grid.Row="4"/>
+            <TextBox x:Name="lapnumber" Text="{Binding LapLimit, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True}" Height="20" Width="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="5,0,0,0"  Grid.Row="4"/>
+            <ComboBox x:Name="maplist" SelectedItem="{Binding SelectedMap}" DisplayMemberPath="MapName"  HorizontalAlignment="Right" VerticalAlignment="Bottom"  Width="110" Height="20" Margin="0,0,5,0"  Grid.Row="4" ItemsSource="{Binding MapList}"/>
 
-            <CheckBox Content="Ingame Overlay &#xD;&#xA;(only DOSBox &#xD;&#xA;supported)" HorizontalAlignment="Left" VerticalAlignment="Top" Width="140" Height="50"  Margin="5,5,0,0" IsEnabled="False"  Grid.Row="5"/>
+            <CheckBox Content="Ingame Overlay &#xA;(only DOSBox &#xA;supported)" HorizontalAlignment="Left" VerticalAlignment="Top" Width="140" Height="50"  Margin="5,5,0,0" IsEnabled="False"  Grid.Row="5"/>
         </Grid>
 
         <Grid Grid.Column="1">
@@ -41,8 +45,8 @@
                 <RowDefinition Height="740"/>
             </Grid.RowDefinitions>
 
-            <TextBox x:Name="path" Text="Select json file" Height="20" Width="580"  VerticalAlignment="Center"  HorizontalAlignment="Left" IsEnabled="False" Grid.Row="0"/>
-            <TextBlock x:Name="debug" Text="Debug Messages" Height="720" Width="580" Margin="0,5,0,0"  VerticalAlignment="Top"  HorizontalAlignment="Left" Background="#CCCCCCCC" Grid.Row="1"/>
+            <TextBox x:Name="path" Text="{Binding JsonDriversPath, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True}" Height="20" Width="580"  VerticalAlignment="Center"  HorizontalAlignment="Left" IsEnabled="False" Grid.Row="0"/>
+            <TextBlock x:Name="debug" Text="{Binding DebugBox, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True}" Height="720" Width="580" Margin="0,5,0,0"  VerticalAlignment="Top"  HorizontalAlignment="Left" Background="#CCCCCCCC" Grid.Row="1"/>
         </Grid>
     </Grid>
 </Window>

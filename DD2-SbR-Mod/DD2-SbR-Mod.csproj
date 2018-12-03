@@ -87,6 +87,8 @@
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\Map.cs" />
     <Compile Include="Models\IMemoryRW.cs" />
+    <Compile Include="ViewModels\Commands\LoadConfigCommand.cs" />
+    <Compile Include="ViewModels\Commands\SelectJsonCommand.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
