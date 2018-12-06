@@ -46,7 +46,7 @@ namespace Sbr.ViewModels
 
 
         //Binded properties
-        private string debugBox = "";
+        private string debugBox = "Debug Box";
         public string DebugBox{
             get { return debugBox; }
             set{
@@ -103,12 +103,13 @@ namespace Sbr.ViewModels
 
         public List<string> ProcessesList { get; set; } = new List<string>();
         public List<Map> MapList { get; set; } = new List<Map>();
+        public List<Car> CarList { get; set; } = new List<Car>();
 
         //Variables
 
         DispatcherTimer dt;
-        public Car[] Cars = new Car[20];
         public string JsonMapsPath = "";
+        string PicturesPath = "";
 
         //Commands
 
@@ -119,6 +120,7 @@ namespace Sbr.ViewModels
             {
                 JsonDriversPath = openFileDialog.FileName;
                 JsonMapsPath = Path.GetDirectoryName(JsonDriversPath) + "\\MapsInfo.json";
+                PicturesPath = Path.GetDirectoryName(JsonDriversPath) + "\\Img\\test.jpg";
             }
         }
 
@@ -142,10 +144,16 @@ namespace Sbr.ViewModels
         }
         private void GetCarInfo()
         {
+            Car[] cars = new Car[20];
             StreamReader sr = new StreamReader(JsonDriversPath);
             String json = sr.ReadToEnd();
-            Cars = JsonConvert.DeserializeObject<Car[]>(json);
-            foreach (Car car in Cars) car.Processname = SelectedProcess;
+            cars = JsonConvert.DeserializeObject<Car[]>(json);
+            foreach (Car car in cars)
+            {
+                car.Processname = SelectedProcess;
+                car.Picture = PicturesPath;
+                CarList.Add(car);
+            }
         }
         private void GetTrackNames()
         {
@@ -163,23 +171,19 @@ namespace Sbr.ViewModels
 
         private void UpdateScore(object sender, EventArgs e)
         {
-            DebugBox = "";
-            foreach (Car car in Cars)
+            foreach (Car car in CarList)
             {
                 car.Update(LapLimit, LapModeActive, SelectedMap);
             }
             if (LapModeActive)
             {
-                Cars = Cars.OrderByDescending(x => x.lapnumber).ThenBy(x => x.position).ToArray();
+                CarList = CarList.OrderByDescending(x => x.LapNumber).ThenBy(x => x.Position).ToList();
             }
             else
             {
-                Cars = Cars.OrderBy(x => x.position).ToArray();
+                CarList = CarList.OrderBy(x => x.Position).ToList();
             }
-            for (int i = 0; i < 20; i++)
-            {
-                DebugBox = DebugBox + (i + 1) + ". " + Cars[i] + "\n";
-            }
+            OnPropertyChange("CarList");
         }
     }
 }
