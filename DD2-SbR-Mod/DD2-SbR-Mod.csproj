@@ -125,7 +125,28 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Img\000.jpg" />
+    <Resource Include="Resources\Img\001.jpg" />
+    <Resource Include="Resources\Img\007.jpg" />
+    <Resource Include="Resources\Img\013.jpg" />
+    <Resource Include="Resources\Img\017.jpg" />
+    <Resource Include="Resources\Img\035.jpg" />
+    <Resource Include="Resources\Img\037.jpg" />
+    <Resource Include="Resources\Img\040.jpg" />
+    <Resource Include="Resources\Img\042.jpg" />
+    <Resource Include="Resources\Img\047.jpg" />
+    <Resource Include="Resources\Img\050.jpg" />
+    <Resource Include="Resources\Img\052.jpg" />
+    <Resource Include="Resources\Img\053.jpg" />
+    <Resource Include="Resources\Img\064.jpg" />
+    <Resource Include="Resources\Img\066.jpg" />
+    <Resource Include="Resources\Img\069.jpg" />
+    <Resource Include="Resources\Img\077.jpg" />
+    <Resource Include="Resources\Img\082.jpg" />
+    <Resource Include="Resources\Img\088.jpg" />
+    <Resource Include="Resources\Img\099.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
       <Visible>False</Visible>

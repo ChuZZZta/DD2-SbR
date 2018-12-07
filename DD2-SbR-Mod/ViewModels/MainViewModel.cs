@@ -109,7 +109,6 @@ namespace Sbr.ViewModels
 
         DispatcherTimer dt;
         public string JsonMapsPath = "";
-        string PicturesPath = "";
 
         //Commands
 
@@ -120,7 +119,6 @@ namespace Sbr.ViewModels
             {
                 JsonDriversPath = openFileDialog.FileName;
                 JsonMapsPath = Path.GetDirectoryName(JsonDriversPath) + "\\MapsInfo.json";
-                PicturesPath = Path.GetDirectoryName(JsonDriversPath) + "\\Img\\test.jpg";
             }
         }
 
@@ -145,13 +143,16 @@ namespace Sbr.ViewModels
         private void GetCarInfo()
         {
             Car[] cars = new Car[20];
+            string picturesPath = Path.GetDirectoryName(JsonDriversPath) + "\\Img\\";
             StreamReader sr = new StreamReader(JsonDriversPath);
+
             String json = sr.ReadToEnd();
             cars = JsonConvert.DeserializeObject<Car[]>(json);
+
             foreach (Car car in cars)
             {
                 car.Processname = SelectedProcess;
-                car.Picture = PicturesPath;
+                car.Picture = picturesPath+car.Number+".jpg";
                 CarList.Add(car);
             }
         }
@@ -160,6 +161,7 @@ namespace Sbr.ViewModels
             
             Map[] maps = new Map[7];
             StreamReader sr = new StreamReader(JsonMapsPath);
+
             String json = sr.ReadToEnd();
             maps = JsonConvert.DeserializeObject<Map[]>(json);
             foreach (Map map in maps)
@@ -171,18 +173,17 @@ namespace Sbr.ViewModels
 
         private void UpdateScore(object sender, EventArgs e)
         {
-            foreach (Car car in CarList)
-            {
-                car.Update(LapLimit, LapModeActive, SelectedMap);
-            }
-            if (LapModeActive)
-            {
-                CarList = CarList.OrderByDescending(x => x.LapNumber).ThenBy(x => x.Position).ToList();
-            }
-            else
-            {
-                CarList = CarList.OrderBy(x => x.Position).ToList();
-            }
+            //Updating car's meemory data 
+            foreach (Car car in CarList) car.Update(LapLimit, LapModeActive, SelectedMap);
+            
+            //sort metod depends on used mode
+            if (LapModeActive) CarList = CarList.OrderByDescending(x => x.LapNumber).ThenBy(x => x.positionread).ToList();
+            else CarList = CarList.OrderBy(x => x.positionread).ToList();
+            
+            //repostion cars du to lack of better methodes on having position on view
+            for (int i = 0; i < 20; i++) CarList[i].Position = i + 1;
+
+            //getting view know that it changed
             OnPropertyChange("CarList");
         }
     }

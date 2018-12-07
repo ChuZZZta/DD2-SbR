@@ -21,7 +21,7 @@ namespace Sbr.Models
         public int MemoryAddr { get; set; }
         public string Processname { get => processname; set => processname = value; }
         private string processname = "";
-
+        public int positionread = 0;
         public int LapNumber { get; set; } = 1;
         public int Position { get; set; } = 1;
         List<int> laptimes = new List<int>();
@@ -31,7 +31,7 @@ namespace Sbr.Models
             IMemoryRW rw = new MemoryRW(Processname);
             if (config)
             {
-                Position = rw.GetByte(MemoryAddr - 0x6);
+                positionread = rw.GetByte(MemoryAddr - 0x6);
                 if( rw.GetByte(MemoryAddr) > 1 && LapNumber != SetLap)
                     {
                         LapNumber++;
@@ -45,7 +45,7 @@ namespace Sbr.Models
             else
             {
                 LapNumber = rw.GetByte(MemoryAddr);
-                Position = rw.GetByte(MemoryAddr - 0x6);
+                positionread = rw.GetByte(MemoryAddr - 0x6);
             }
         }
         public override string ToString()
