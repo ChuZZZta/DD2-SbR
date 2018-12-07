@@ -4,6 +4,7 @@ using Sbr.Models;
 using Sbr.ViewModels.Commands;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
@@ -102,7 +103,7 @@ namespace Sbr.ViewModels
         //Binded Lists
 
         public List<string> ProcessesList { get; set; } = new List<string>();
-        public List<Map> MapList { get; set; } = new List<Map>();
+        public ObservableCollection<Map> MapList { get; set; } = new ObservableCollection<Map>();
         public List<Car> CarList { get; set; } = new List<Car>();
 
         //Variables
@@ -168,9 +169,8 @@ namespace Sbr.ViewModels
             {
                 MapList.Add(map);
             }
-            OnPropertyChange("MapList");
         }
-
+        
         private void UpdateScore(object sender, EventArgs e)
         {
             //Updating car's meemory data 
