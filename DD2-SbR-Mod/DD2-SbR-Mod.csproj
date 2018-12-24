@@ -115,12 +115,12 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
-    <None Include="Resources\DriversWindowsVersion.json" />
+    <None Include="Resources\Json\Driver\DriversWindowsVersion.json" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Resources\MapsInfo.json" />
+    <None Include="Resources\Json\Map\MapsInfo.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

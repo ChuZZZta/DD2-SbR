@@ -30,6 +30,7 @@ namespace Sbr.ViewModels
             this.SelectJsonCommand = new SelectJsonCommand(this);
             this.LoadConfigCommand = new LoadConfigCommand(this);
             GetRunningProcesses();
+            AutoConfig();
         }
 
         //Implemented intefaces for binding and command
@@ -51,7 +52,7 @@ namespace Sbr.ViewModels
         public string DebugBox{
             get { return debugBox; }
             set{
-                debugBox = value;
+                debugBox = debugBox +" \n " + value;
                 OnPropertyChange("DebugBox");
             }
         }
@@ -119,7 +120,6 @@ namespace Sbr.ViewModels
             if (openFileDialog.ShowDialog() == true)
             {
                 JsonDriversPath = openFileDialog.FileName;
-                JsonMapsPath = Path.GetDirectoryName(JsonDriversPath) + "\\MapsInfo.json";
             }
         }
 
@@ -131,6 +131,26 @@ namespace Sbr.ViewModels
         }
 
         //Methods
+
+        void AutoConfig()
+        {
+            DebugBox = "Auto config attempt...";
+            //auto config jsons
+            string map = Directory.GetCurrentDirectory() + "\\Resources\\Json\\Map";
+            string driver = Directory.GetCurrentDirectory() + "\\Resources\\Json\\Driver";
+            var driversjson = Directory.GetFiles(driver);
+            var mapsjson = Directory.GetFiles(map);
+            DebugBox = "Found driver's jsons: "+driversjson.Length+", found map's jsons: "+mapsjson.Length;
+            DebugBox = "Setting app for: \n"+ mapsjson[0]+ " \n" + driversjson[0];
+            JsonDriversPath = driversjson[0];
+            JsonMapsPath = mapsjson[0];
+            //auto config proces
+            List<string> filtredProcess = ProcessesList.Where(x => x.Contains("DD2h")).ToList();
+            DebugBox = "Found " + filtredProcess.Count + " DD2 related processes";
+            DebugBox = "Setting app for: " + filtredProcess[0];
+            SelectedProcess = filtredProcess[0];
+            DebugBox = "Autoconfig complited";
+        }
 
         private void GetRunningProcesses()
         {
@@ -144,7 +164,7 @@ namespace Sbr.ViewModels
         private void GetCarInfo()
         {
             Car[] cars = new Car[20];
-            string picturesPath = Path.GetDirectoryName(JsonDriversPath) + "\\Img\\";
+            string picturesPath = Directory.GetCurrentDirectory() + "\\Resources\\Img\\";
             StreamReader sr = new StreamReader(JsonDriversPath);
 
             String json = sr.ReadToEnd();

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Sbr"
         xmlns:ViewModels="clr-namespace:Sbr.ViewModels" x:Class="Sbr.MainView"
         mc:Ignorable="d"
-        Title="Destruction Derby 2 Scoreboard And Lap Mod" Height="800" Width="750" Background="White" ResizeMode="NoResize">
+        Title="DD2 SbR Mod by ChuZZZta" Height="800" Width="980" Background="White" ResizeMode="NoResize">
     <Window.DataContext>
         <ViewModels:MainViewModel/>
     </Window.DataContext>
@@ -21,7 +21,8 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="600"/>
+            <ColumnDefinition Width="580"/>
+            <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0">
@@ -47,7 +48,6 @@
 
             <CheckBox Content="Ingame Overlay &#xA;(only DOSBox &#xA;supported)" HorizontalAlignment="Left" VerticalAlignment="Top" Width="140" Height="50"  Margin="5,5,0,0" IsEnabled="False"  Grid.Row="5"/>
 
-            <TextBlock x:Name="debug" Text="{Binding DebugBox, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True}" Height="350" Width="150" Margin="0,5,0,0"  VerticalAlignment="Top"  HorizontalAlignment="Left" Background="#CCCCCCCC" Grid.Row="6"/>
         </Grid>
 
         <Grid Grid.Column="1">
@@ -68,6 +68,11 @@
                     </GridView>
                 </ListView.View>
             </ListView>
+        </Grid>
+        <Grid Grid.Column="2">
+
+            <TextBlock x:Name="debug" Text="{Binding DebugBox, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True}" Height="760" Width="230" Margin="5,5,5,5"  VerticalAlignment="Top"  HorizontalAlignment="Left" Background="#CCCCCCCC" Grid.Row="6" TextWrapping="Wrap"/>
+            
         </Grid>
     </Grid>
 </Window>
