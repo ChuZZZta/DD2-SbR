@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,10 +8,10 @@ using System.Windows.Input;
 
 namespace Sbr.ViewModels.Commands
 {
-    public class SelectJsonCommand : ICommand
+    public class AutoConfigCommand : ICommand
     {
         public MainViewModel ViewModel { get; set; }
-        public SelectJsonCommand(MainViewModel viewModel)
+        public AutoConfigCommand(MainViewModel viewModel)
         {
             ViewModel = viewModel;
         }
@@ -23,7 +24,7 @@ namespace Sbr.ViewModels.Commands
 
         public void Execute(object parameter)
         {
-            this.ViewModel.SelectJson();
+            this.ViewModel.AutoConfig();
         }
     }
 }

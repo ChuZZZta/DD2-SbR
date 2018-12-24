@@ -27,9 +27,8 @@ namespace Sbr.ViewModels
                 Interval = TimeSpan.FromSeconds(1)
             };
             dt.Tick += UpdateScore;
-            this.SelectJsonCommand = new SelectJsonCommand(this);
             this.LoadConfigCommand = new LoadConfigCommand(this);
-            GetRunningProcesses();
+            this.AutoConfigCommand = new AutoConfigCommand(this);
             AutoConfig();
         }
 
@@ -44,16 +43,25 @@ namespace Sbr.ViewModels
         }
 
         public LoadConfigCommand LoadConfigCommand { get; set; }
-        public SelectJsonCommand SelectJsonCommand { get; set; }
-
+        public AutoConfigCommand AutoConfigCommand { get; set; }
 
         //Binded properties
-        private string jsonDriversPath = "Select a drivers config file";
+        private string jsonDriversPath = "";
         public string JsonDriversPath{
             get { return jsonDriversPath; }
             set{
                 jsonDriversPath = value;
                 OnPropertyChange("JsonDriversPath");
+            }
+        }
+        private string jsonMapsPath = "";
+        public string JsonMapsPath
+        {
+            get { return jsonMapsPath; }
+            set
+            {
+                jsonMapsPath = value;
+                OnPropertyChange("JsonMapsPath");
             }
         }
         private bool lapModeActive = false;
@@ -96,24 +104,17 @@ namespace Sbr.ViewModels
         //Binded Lists
 
         public List<string> ProcessesList { get; set; } = new List<string>();
+        public List<string> DriverJsonList { get; set; } = new List<string>();
+        public List<string> MapJsonList { get; set; } = new List<string>();
         public ObservableCollection<Map> MapList { get; set; } = new ObservableCollection<Map>();
         public List<Car> CarList { get; set; } = new List<Car>();
 
         //Variables
 
         DispatcherTimer dt;
-        public string JsonMapsPath = "";
 
         //Commands
-
-        public void SelectJson()
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            if (openFileDialog.ShowDialog() == true)
-            {
-                JsonDriversPath = openFileDialog.FileName;
-            }
-        }
+        
 
         public void LoadConfig()
         {
@@ -121,28 +122,36 @@ namespace Sbr.ViewModels
             GetTrackNames();
             dt.Start();
         }
+        
 
-        //Methods
-
-        void AutoConfig()
+        public void AutoConfig()
         {
+            //clearing lists
+            ProcessesList.Clear();
+            DriverJsonList.Clear();
+            MapJsonList.Clear();
             Log("Auto config attempt...");
-            //auto config jsons
-            string map = Directory.GetCurrentDirectory() + "\\Resources\\Json\\Map";
-            string driver = Directory.GetCurrentDirectory() + "\\Resources\\Json\\Driver";
-            var driversjson = Directory.GetFiles(driver);
-            var mapsjson = Directory.GetFiles(map);
+            //loading file paths to lists
+            string[] driversjson = Directory.GetFiles(Directory.GetCurrentDirectory() + "\\Resources\\Json\\Driver");
+            string[] mapsjson = Directory.GetFiles(Directory.GetCurrentDirectory() + "\\Resources\\Json\\Map");
+            foreach(string s in driversjson) { DriverJsonList.Add(s); }
+            foreach (string s in mapsjson) { MapJsonList.Add(s); }
+            //autoconfig driver and map json
             Log("Found driver's jsons: " +driversjson.Length+", found map's jsons: "+mapsjson.Length);
             Log("Setting app for: \n" + mapsjson[0]+ " \n" + driversjson[0]);
             JsonDriversPath = driversjson[0];
             JsonMapsPath = mapsjson[0];
-            //auto config proces
+            //getting running process and filtring it
+            GetRunningProcesses();
             List<string> filtredProcess = ProcessesList.Where(x => x.Contains("DD2")).ToList();
             Log("Found " + filtredProcess.Count + " DD2 related processes");
             Log("Setting app for: " + filtredProcess[0]);
+            //autoconfig process
             SelectedProcess = filtredProcess[0];
             Log("Autoconfig complited");
         }
+
+        //Methods
 
         void Log(string log)
         {
@@ -157,6 +166,7 @@ namespace Sbr.ViewModels
             {
                 ProcessesList.Add(process.ProcessName);
             }
+            ProcessesList.Sort();
         }
         private void GetCarInfo()
         {

@@ -87,8 +87,8 @@
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\Map.cs" />
     <Compile Include="Models\IMemoryRW.cs" />
+    <Compile Include="ViewModels\Commands\AutoConfigCommand.cs" />
     <Compile Include="ViewModels\Commands\LoadConfigCommand.cs" />
-    <Compile Include="ViewModels\Commands\SelectJsonCommand.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -126,6 +126,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Resources\Img\000.jpg" />
     <Resource Include="Resources\Img\001.jpg" />
     <Resource Include="Resources\Img\007.jpg" />
@@ -146,21 +158,6 @@
     <Resource Include="Resources\Img\082.jpg" />
     <Resource Include="Resources\Img\088.jpg" />
     <Resource Include="Resources\Img\099.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Img\test.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
