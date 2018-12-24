@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Sbr"
         xmlns:ViewModels="clr-namespace:Sbr.ViewModels" x:Class="Sbr.MainView"
         mc:Ignorable="d"
-        Title="DD2 SbR Mod by ChuZZZta" Height="800" Width="980" Background="White" ResizeMode="NoResize">
+        Title="DD2 SbR Mod by ChuZZZta" Height="800" Width="750" Background="White" ResizeMode="NoResize">
     <Window.DataContext>
         <ViewModels:MainViewModel/>
     </Window.DataContext>
@@ -22,7 +22,6 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="580"/>
-            <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0">
@@ -51,13 +50,7 @@
         </Grid>
 
         <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="740"/>
-            </Grid.RowDefinitions>
-
-            <TextBox x:Name="path" Text="{Binding JsonDriversPath, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True}" Height="20" Width="580"  VerticalAlignment="Center"  HorizontalAlignment="Left" IsEnabled="False" Grid.Row="0"/>
-            <ListView Name="test"  Grid.Row="1" ItemsSource="{Binding CarList}">
+            <ListView Name="carlist"  ItemsSource="{Binding CarList}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Width="55" Header="Position" DisplayMemberBinding="{Binding Position}" />
@@ -68,11 +61,6 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-        </Grid>
-        <Grid Grid.Column="2">
-
-            <TextBlock x:Name="debug" Text="{Binding DebugBox, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True}" Height="760" Width="230" Margin="5,5,5,5"  VerticalAlignment="Top"  HorizontalAlignment="Left" Background="#CCCCCCCC" Grid.Row="6" TextWrapping="Wrap"/>
-            
         </Grid>
     </Grid>
 </Window>

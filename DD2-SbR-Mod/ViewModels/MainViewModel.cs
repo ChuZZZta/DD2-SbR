@@ -48,14 +48,6 @@ namespace Sbr.ViewModels
 
 
         //Binded properties
-        private string debugBox = "Debug Box";
-        public string DebugBox{
-            get { return debugBox; }
-            set{
-                debugBox = debugBox +" \n " + value;
-                OnPropertyChange("DebugBox");
-            }
-        }
         private string jsonDriversPath = "Select a drivers config file";
         public string JsonDriversPath{
             get { return jsonDriversPath; }
@@ -134,22 +126,27 @@ namespace Sbr.ViewModels
 
         void AutoConfig()
         {
-            DebugBox = "Auto config attempt...";
+            Log("Auto config attempt...");
             //auto config jsons
             string map = Directory.GetCurrentDirectory() + "\\Resources\\Json\\Map";
             string driver = Directory.GetCurrentDirectory() + "\\Resources\\Json\\Driver";
             var driversjson = Directory.GetFiles(driver);
             var mapsjson = Directory.GetFiles(map);
-            DebugBox = "Found driver's jsons: "+driversjson.Length+", found map's jsons: "+mapsjson.Length;
-            DebugBox = "Setting app for: \n"+ mapsjson[0]+ " \n" + driversjson[0];
+            Log("Found driver's jsons: " +driversjson.Length+", found map's jsons: "+mapsjson.Length);
+            Log("Setting app for: \n" + mapsjson[0]+ " \n" + driversjson[0]);
             JsonDriversPath = driversjson[0];
             JsonMapsPath = mapsjson[0];
             //auto config proces
-            List<string> filtredProcess = ProcessesList.Where(x => x.Contains("DD2h")).ToList();
-            DebugBox = "Found " + filtredProcess.Count + " DD2 related processes";
-            DebugBox = "Setting app for: " + filtredProcess[0];
+            List<string> filtredProcess = ProcessesList.Where(x => x.Contains("DD2")).ToList();
+            Log("Found " + filtredProcess.Count + " DD2 related processes");
+            Log("Setting app for: " + filtredProcess[0]);
             SelectedProcess = filtredProcess[0];
-            DebugBox = "Autoconfig complited";
+            Log("Autoconfig complited");
+        }
+
+        void Log(string log)
+        {
+            Console.WriteLine(log);
         }
 
         private void GetRunningProcesses()
