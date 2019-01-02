@@ -9,6 +9,7 @@ namespace Sbr.Models
 {
     public class Car
     {
+        //json data
         [JsonProperty("Id")]
         public int Id { get; set; }
         [JsonProperty("Name")]
@@ -17,8 +18,11 @@ namespace Sbr.Models
         public string Number { get; set; }
         [JsonProperty("PicturePath")]
         public string Picture { get; set; }
-        [JsonProperty("MemoryAddr")]
-        public int MemoryAddr { get; set; }
+        [JsonProperty("RaceMemoryAddress")]
+        public int RaceMemoryAddress { get; set; }
+        [JsonProperty("ChempionshipMemoryAddress")]
+        public int ChempionshipMemoryAddress { get; set; }
+        
         public string Processname { get => processname; set => processname = value; }
         private string processname = "";
         public int positionread = 0;
@@ -31,21 +35,21 @@ namespace Sbr.Models
             IMemoryRW rw = new MemoryRW(Processname);
             if (config)
             {
-                positionread = rw.GetByte(MemoryAddr - 0x6);
-                if( rw.GetByte(MemoryAddr) > 1 && LapNumber != SetLap)
+                positionread = rw.GetByte(RaceMemoryAddress - 0x6);
+                if( rw.GetByte(RaceMemoryAddress) > 1 && LapNumber != SetLap)
                     {
                         LapNumber++;
-                        rw.SetByte(MemoryAddr, 1);
+                        rw.SetByte(RaceMemoryAddress, 1);
                     }
                 if(LapNumber == SetLap)
                     {
-                        rw.SetByte(MemoryAddr, (byte)map.LapsNumber);
+                        rw.SetByte(RaceMemoryAddress, (byte)map.LapsNumber);
                     }
             }
             else
             {
-                LapNumber = rw.GetByte(MemoryAddr);
-                positionread = rw.GetByte(MemoryAddr - 0x6);
+                LapNumber = rw.GetByte(RaceMemoryAddress);
+                positionread = rw.GetByte(RaceMemoryAddress - 0x6);
             }
         }
         public override string ToString()

@@ -4,139 +4,159 @@
     "Name": "Player",
     "Numer": "001",
     "PicturePath":"../img/master.jpg",
-    "MemoryAddr":0x00795C48
-    },
+    "RaceMemoryAddress":0x00795C48,
+    "ChempionshipMemoryAddress":0x00000000
+	},
     {
 	"Id" : 1,
     "Name": "The Master",
     "Numer": "000",
     "PicturePath":"../img/master.jpg",
-    "MemoryAddr":0x00795C5C
-    },
+    "RaceMemoryAddress":0x00795C5C,
+    "ChempionshipMemoryAddress":0x00000000
+	},
     {
 	"Id" : 2,
     "Name": "The Thrashman",
     "Numer": "007",
     "PicturePath":"../img/master.jpg",
-    "MemoryAddr":0x00795C70
-    },
+    "RaceMemoryAddress":0x00795C70,
+    "ChempionshipMemoryAddress":0x00000000
+	},
     {
 	"Id" : 3,
     "Name": "Skum",
     "Numer": "013",
     "PicturePath":"../img/master.jpg",
-    "MemoryAddr":0x00795C84
-    },
+    "RaceMemoryAddress":0x00795C84,
+    "ChempionshipMemoryAddress":0x00000000
+	},
     {
 	"Id" : 4,
     "Name": "The Pro",
     "Numer": "017",
     "PicturePath":"../img/master.jpg",
-    "MemoryAddr":0x00795C98
-    },
+    "RaceMemoryAddress":0x00795C98,
+    "ChempionshipMemoryAddress":0x00000000
+	},
     {
 	"Id" : 5,
     "Name": "The Goddess",
     "Numer": "035",
     "PicturePath":"../img/master.jpg",
-    "MemoryAddr":0x00795CAC
-    },
+    "RaceMemoryAddress":0x00795CAC,
+    "ChempionshipMemoryAddress":0x00000000
+	},
     {
 	"Id" : 6,
     "Name": "The Learner Driver",
     "Numer": "037",
     "PicturePath":"../img/master.jpg",
-    "MemoryAddr":0x00795CC0
-    },
+    "RaceMemoryAddress":0x00795CC0,
+    "ChempionshipMemoryAddress":0x00000000
+	},
     {
 	"Id" : 7,
     "Name": "The Psycho",
     "Numer": "040",
     "PicturePath":"../img/master.jpg",
-    "MemoryAddr":0x00795CD4
-    },
+    "RaceMemoryAddress":0x00795CD4,
+    "ChempionshipMemoryAddress":0x00000000
+	},
     {
 	"Id" : 8,
     "Name": "The Chief",
     "Numer": "042",
     "PicturePath":"../img/master.jpg",
-    "MemoryAddr":0x00795CE8
-    },
+    "RaceMemoryAddress":0x00795CE8,
+    "ChempionshipMemoryAddress":0x00000000
+	},
     {
 	"Id" : 9,
     "Name": "The Optician",
     "Numer": "047",
     "PicturePath":"../img/master.jpg",
-    "MemoryAddr":0x00795CFC
-    },
+    "RaceMemoryAddress":0x00795CFC,
+    "ChempionshipMemoryAddress":0x00000000
+	},
     {
 	"Id" : 10,
     "Name": "The General",
     "Numer": "050",
     "PicturePath":"../img/master.jpg",
-    "MemoryAddr":0x00795D10
-    },
+    "RaceMemoryAddress":0x00795D10,
+    "ChempionshipMemoryAddress":0x00000000
+	},
     {
 	"Id" : 11,
     "Name": "Heavy Metal Hero",
     "Numer": "052",
     "PicturePath":"../img/master.jpg",
-    "MemoryAddr":0x00795D24
-    },
+    "RaceMemoryAddress":0x00795D24,
+    "ChempionshipMemoryAddress":0x00000000
+	},
     {
 	"Id" : 12,
     "Name": "Barmy Army",
     "Numer": "053",
     "PicturePath":"../img/master.jpg",
-    "MemoryAddr":0x00795D38
-    },
+    "RaceMemoryAddress":0x00795D38,
+    "ChempionshipMemoryAddress":0x00000000
+	},
    {
 	"Id" : 13,
     "Name": "Pyromaniac",
     "Numer": "064",
     "PicturePath":"../img/master.jpg",
-    "MemoryAddr":0x00795D4C
-    },
+    "RaceMemoryAddress":0x00795D4C,
+    "ChempionshipMemoryAddress":0x00000000
+	},
     {
 	"Id" : 14,
     "Name": "The Beast",
     "Numer": "066",
     "PicturePath":"../img/master.jpg",
-    "MemoryAddr":0x00795D60
-    },
+    "RaceMemoryAddress":0x00795D60,
+    "ChempionshipMemoryAddress":0x00000000
+	},
     {
 	"Id" : 15,
     "Name": "Passion Wagon",
     "Numer": "069",
     "PicturePath":"../img/master.jpg",
-    "MemoryAddr":0x00795D74
-    },
+    "RaceMemoryAddress":0x00795D74,
+    "ChempionshipMemoryAddress":0x00000000
+	},
     {
 	"Id" : 16,
     "Name": "The Undertaker",
     "Numer": "077",
     "PicturePath":"../img/master.jpg",
-    "MemoryAddr":0x00795D88
-    },
+    "RaceMemoryAddress":0x00795D88,
+    "ChempionshipMemoryAddress":0x00000000
+	},
     {
 	"Id" : 17,
     "Name": "Suicide Squad",
     "Numer": "082",
     "PicturePath":"../img/master.jpg",
-    "MemoryAddr":0x00795D9C
-    },
+    "RaceMemoryAddress":0x00795D9C,
+    "ChempionshipMemoryAddress":0x00000000
+	},
     {
 	"Id" : 18,
     "Name": "The Bouncer",
     "Numer": "088",
     "PicturePath":"../img/master.jpg",
-    "MemoryAddr":0x00795DB0
-    },
+    "RaceMemoryAddress":0x00795DB0,
+    "ChempionshipMemoryAddress":0x00000000
+	},
     {
 	"Id" : 19,
     "Name": "Rivet",
     "Numer": "099",
     "PicturePath":"../img/master.jpg",
-    "MemoryAddr":0x00795DC4
+    "RaceMemoryAddress":0x00795DC4,
+	"ChempionshipMemoryAddress":0x00000000
     }
   ]
