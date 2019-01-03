@@ -68,6 +68,7 @@
                         <GridViewColumn Width="55" Header="Number" DisplayMemberBinding="{Binding Number}" />
                         <GridViewColumn Width="150" Header="Name" DisplayMemberBinding="{Binding Name}" />
                         <GridViewColumn Width="25" Header="Lap" DisplayMemberBinding="{Binding LapNumber}" />
+                        <GridViewColumn Width="50" Header="Distance" DisplayMemberBinding="{Binding Distance}" />
                     </GridView>
                 </ListView.View>
             </ListView>

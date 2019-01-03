@@ -23,19 +23,30 @@ namespace Sbr.Models
         [JsonProperty("ChempionshipMemoryAddress")]
         public int ChempionshipMemoryAddress { get; set; }
         
-        public string Processname { get => processname; set => processname = value; }
-        private string processname = "";
-        public int positionread = 0;
+        public string Processname { get; set; }
         public int LapNumber { get; set; } = 1;
         public int Position { get; set; } = 1;
-        List<int> laptimes = new List<int>();
+        public int Distance { get; set; } = 1;
+
+        //variables
+        public int positionread = 0;
+
+
+        /* Addreses in memmory:
+         *  RaceMemoryAddress          lap count
+         *  RaceMemoryAddress - 0x6    postion
+         *  RaceMemoryAddress + 0x2    lap distance
+         * 
+         */
+
 
         public void Update(byte SetLap, bool config, Map map)
         {
             IMemoryRW rw = new MemoryRW(Processname);
+            positionread = rw.GetByte(RaceMemoryAddress - 0x6);
+            Distance = rw.GetByte(RaceMemoryAddress + 0x2);
             if (config)
             {
-                positionread = rw.GetByte(RaceMemoryAddress - 0x6);
                 if( rw.GetByte(RaceMemoryAddress) > 1 && LapNumber != SetLap)
                     {
                         LapNumber++;
@@ -49,7 +60,6 @@ namespace Sbr.Models
             else
             {
                 LapNumber = rw.GetByte(RaceMemoryAddress);
-                positionread = rw.GetByte(RaceMemoryAddress - 0x6);
             }
         }
         public override string ToString()
