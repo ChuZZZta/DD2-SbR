@@ -31,10 +31,10 @@ namespace Sbr.Models
 
             Process process = Process.GetProcessesByName(processname)[0];
             IntPtr processHandle = OpenProcess(0x0010, false, process.Id);
-
+            int address = (int)process.MainModule.BaseAddress + offset; // calculating the current position of variable
             int bytesRead = 0;
             byte[] buffer = new byte[1]; 
-            ReadProcessMemory((int)processHandle, offset, buffer, buffer.Length, ref bytesRead);
+            ReadProcessMemory((int)processHandle, address, buffer, buffer.Length, ref bytesRead);
             return buffer[0];
         }
 
@@ -42,10 +42,11 @@ namespace Sbr.Models
         {
             Process process = Process.GetProcessesByName(processname)[0];
             IntPtr processHandle = OpenProcess(0x1F0FFF, false, process.Id);
+            int address = (int)process.MainModule.BaseAddress + offset; // calculating the current position of variable
             int bytesWritten = 0;
             byte[] buffer = new byte[1];
             buffer[0] = value;
-            WriteProcessMemory((int)processHandle, offset, buffer, buffer.Length, ref bytesWritten);
+            WriteProcessMemory((int)processHandle, address, buffer, buffer.Length, ref bytesWritten);
         }
     }
 }
