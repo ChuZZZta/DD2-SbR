@@ -33,9 +33,9 @@ namespace Sbr.Models
             IntPtr processHandle = OpenProcess(0x0010, false, process.Id);
             int address = (int)process.MainModule.BaseAddress + offset; // calculating the current position of variable
             int bytesRead = 0;
-            byte[] buffer = new byte[1]; 
+            byte[] buffer = new byte[2]; //array for 2 bytes
             ReadProcessMemory((int)processHandle, address, buffer, buffer.Length, ref bytesRead);
-            return buffer[0];
+            return BitConverter.ToInt16(buffer, 0); //converting byte array to int 
         }
 
         public void SetByte(int offset,byte value)

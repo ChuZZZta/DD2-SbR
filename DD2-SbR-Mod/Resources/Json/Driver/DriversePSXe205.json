@@ -5,7 +5,7 @@
     "Numer": "001",
     "PicturePath":"../img/master.jpg",
     "RaceMemoryAddress":0xB176B4,
-	"ChempionshipMemoryAddress":0x01B41328
+	"ChempionshipMemoryAddress":0xB01328
 	},
     {
 	"Id" : 1,
@@ -13,7 +13,7 @@
     "Numer": "000",
     "PicturePath":"../img/master.jpg",
     "RaceMemoryAddress":0xB176C8,
-	"ChempionshipMemoryAddress":0x01B4135E
+	"ChempionshipMemoryAddress":0xB0135E
 	},
     {
 	"Id" : 2,
@@ -21,7 +21,7 @@
     "Numer": "007",
     "PicturePath":"../img/master.jpg",
     "RaceMemoryAddress":0xB176DC,
-	"ChempionshipMemoryAddress":0x01B41394
+	"ChempionshipMemoryAddress":0xB01394
 	},
     {
 	"Id" : 3,
@@ -29,7 +29,7 @@
     "Numer": "013",
     "PicturePath":"../img/master.jpg",
     "RaceMemoryAddress":0xB176F0,
-	"ChempionshipMemoryAddress":0x01B413CA
+	"ChempionshipMemoryAddress":0xB013CA
 	},
     {
 	"Id" : 4,
@@ -37,7 +37,7 @@
     "Numer": "017",
     "PicturePath":"../img/master.jpg",
     "RaceMemoryAddress":0xB17704,
-	"ChempionshipMemoryAddress":0x01B41400
+	"ChempionshipMemoryAddress":0xB01400
 	},
     {
 	"Id" : 5,
@@ -45,7 +45,7 @@
     "Numer": "035",
     "PicturePath":"../img/master.jpg",
     "RaceMemoryAddress":0xB17718,
-	"ChempionshipMemoryAddress":0x01B41436
+	"ChempionshipMemoryAddress":0xB01436
 	},
     {
 	"Id" : 6,
@@ -53,7 +53,7 @@
     "Numer": "037",
     "PicturePath":"../img/master.jpg",
     "RaceMemoryAddress":0xB1772C,
-	"ChempionshipMemoryAddress":0x01B4146C
+	"ChempionshipMemoryAddress":0xB0146C
 	},
     {
 	"Id" : 7,
@@ -61,7 +61,7 @@
     "Numer": "040",
     "PicturePath":"../img/master.jpg",
     "RaceMemoryAddress":0xB17740,
-	"ChempionshipMemoryAddress":0x01B414A2
+	"ChempionshipMemoryAddress":0xB014A2
 	},
     {
 	"Id" : 8,
@@ -69,7 +69,7 @@
     "Numer": "042",
     "PicturePath":"../img/master.jpg",
     "RaceMemoryAddress":0xB17754,
-	"ChempionshipMemoryAddress":0x01B414D8
+	"ChempionshipMemoryAddress":0xB014D8
 	},
     {
 	"Id" : 9,
@@ -77,7 +77,7 @@
     "Numer": "047",
     "PicturePath":"../img/master.jpg",
     "RaceMemoryAddress":0xB17768,
-	"ChempionshipMemoryAddress":0x01B4150E
+	"ChempionshipMemoryAddress":0xB0150E
 	},
     {
 	"Id" : 10,
@@ -85,7 +85,7 @@
     "Numer": "050",
     "PicturePath":"../img/master.jpg",
     "RaceMemoryAddress":0xB1777C,
-	"ChempionshipMemoryAddress":0x01B41544
+	"ChempionshipMemoryAddress":0xB01544
 	},
     {
 	"Id" : 11,
@@ -93,7 +93,7 @@
     "Numer": "052",
     "PicturePath":"../img/master.jpg",
     "RaceMemoryAddress":0xB17790,
-	"ChempionshipMemoryAddress":0x01B4157A
+	"ChempionshipMemoryAddress":0xB0157A
 	},
     {
 	"Id" : 12,
@@ -101,7 +101,7 @@
     "Numer": "053",
     "PicturePath":"../img/master.jpg",
     "RaceMemoryAddress":0xB177A4,
-	"ChempionshipMemoryAddress":0x01B415B0
+	"ChempionshipMemoryAddress":0xB015B0
 	},
    {
 	"Id" : 13,
@@ -109,7 +109,7 @@
     "Numer": "064",
     "PicturePath":"../img/master.jpg",
     "RaceMemoryAddress":0xB177B8,
-	"ChempionshipMemoryAddress":0x01B415E6
+	"ChempionshipMemoryAddress":0xB015E6
 	},
     {
 	"Id" : 14,
@@ -117,7 +117,7 @@
     "Numer": "066",
     "PicturePath":"../img/master.jpg",
     "RaceMemoryAddress":0xB177CC,
-	"ChempionshipMemoryAddress":0x01B4161C
+	"ChempionshipMemoryAddress":0xB0161C
 	},
     {
 	"Id" : 15,
@@ -125,7 +125,7 @@
     "Numer": "069",
     "PicturePath":"../img/master.jpg",
     "RaceMemoryAddress":0xB177E0,
-	"ChempionshipMemoryAddress":0x01B41652
+	"ChempionshipMemoryAddress":0xB01652
 	},
     {
 	"Id" : 16,
@@ -133,7 +133,7 @@
     "Numer": "077",
     "PicturePath":"../img/master.jpg",
     "RaceMemoryAddress":0xB177F4,
-	"ChempionshipMemoryAddress":0x01B41688
+	"ChempionshipMemoryAddress":0xB01688
 	},
     {
 	"Id" : 17,
@@ -141,7 +141,7 @@
     "Numer": "082",
     "PicturePath":"../img/master.jpg",
     "RaceMemoryAddress":0xB17808,
-	"ChempionshipMemoryAddress":0x01B416BE
+	"ChempionshipMemoryAddress":0xB016BE
 	},
     {
 	"Id" : 18,
@@ -149,7 +149,7 @@
     "Numer": "088",
     "PicturePath":"../img/master.jpg",
     "RaceMemoryAddress":0xB1781C,
-	"ChempionshipMemoryAddress":0x01B416F4
+	"ChempionshipMemoryAddress":0xB016F4
 	},
     {
 	"Id" : 19,
@@ -157,6 +157,6 @@
     "Numer": "099",
     "PicturePath":"../img/master.jpg",
     "RaceMemoryAddress":0xB17830,
-	"ChempionshipMemoryAddress":0x01B4172A
+	"ChempionshipMemoryAddress":0xB0172A
     }
   ]

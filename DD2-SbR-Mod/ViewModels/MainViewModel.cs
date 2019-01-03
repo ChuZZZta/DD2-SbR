@@ -204,8 +204,8 @@ namespace Sbr.ViewModels
             foreach (Car car in CarList) car.Update(LapLimit, LapModeActive, SelectedMap);
             
             //sort metod depends on used mode
-            if (LapModeActive) CarList = CarList.OrderByDescending(x => x.LapNumber).ThenBy(x => x.positionread).ToList();
-            else CarList = CarList.OrderBy(x => x.positionread).ToList();
+            if (LapModeActive) CarList = CarList.OrderByDescending(x => x.LapNumber).ThenBy(x => x.PositionRead).ToList();
+            else CarList = CarList.OrderBy(x => x.PositionRead).ToList();
             
             //repostion cars du to lack of better methodes on having position on view
             for (int i = 0; i < 20; i++) CarList[i].Position = i + 1;

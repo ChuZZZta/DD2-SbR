@@ -69,6 +69,8 @@
                         <GridViewColumn Width="150" Header="Name" DisplayMemberBinding="{Binding Name}" />
                         <GridViewColumn Width="25" Header="Lap" DisplayMemberBinding="{Binding LapNumber}" />
                         <GridViewColumn Width="50" Header="Distance" DisplayMemberBinding="{Binding Distance}" />
+                        <GridViewColumn Width="50" Header="CurrChemp" DisplayMemberBinding="{Binding CurrChempScore}" />
+                        <GridViewColumn Width="50" Header="PrevChemp" DisplayMemberBinding="{Binding PrevChempScore}" />
                     </GridView>
                 </ListView.View>
             </ListView>
