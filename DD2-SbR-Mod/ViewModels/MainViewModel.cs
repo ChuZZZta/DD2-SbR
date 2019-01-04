@@ -100,6 +100,24 @@ namespace Sbr.ViewModels
                 OnPropertyChange("SelectedMap");
             }
         }
+        public int SelectedTabIndex
+        {
+            set
+            {
+                switch (value)
+                {
+                    case 0:
+                        dt.Stop();
+                        break;
+                    case 1:
+                        dt.Start();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
 
         //Binded Lists
 
@@ -118,9 +136,9 @@ namespace Sbr.ViewModels
 
         public void LoadConfig()
         {
+            MapJsonList.Clear(); //clearing lists
             GetCarInfo();
             GetTrackNames();
-            dt.Start();
         }
         
 

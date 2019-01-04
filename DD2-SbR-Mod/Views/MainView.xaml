@@ -6,74 +6,74 @@
         xmlns:local="clr-namespace:Sbr"
         xmlns:ViewModels="clr-namespace:Sbr.ViewModels" x:Class="Sbr.MainView"
         mc:Ignorable="d"
-        Title="DD2 SbR Mod by ChuZZZta" Height="800" Width="750" Background="White" ResizeMode="NoResize">
+        Title="DD2 SbR Mod by ChuZZZta" Height="800" Width="600" Background="White" ResizeMode="NoResize">
+    
     <Window.DataContext>
         <ViewModels:MainViewModel/>
     </Window.DataContext>
-    
+
     <Window.Resources>
         <DataTemplate x:Key="PhotoCell">
             <Image Height="60" Stretch="Uniform" Source="{Binding Picture}" />
         </DataTemplate>
     </Window.Resources>
-    
-    
+
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="580"/>
-        </Grid.ColumnDefinitions>
+        <TabControl SelectedIndex="{Binding SelectedTabIndex, Mode=TwoWay}">
+            <TabItem Header="Config">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="55"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="1000"/>
+                    </Grid.RowDefinitions>
 
-        <Grid Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="55"/>
-                <RowDefinition Height="25"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="370"/>
-            </Grid.RowDefinitions>
+                    <Label Content="Select DD2 process:" VerticalAlignment="Center" Grid.Row="0"/>
+                    <ComboBox x:Name="processesList" SelectedItem="{Binding SelectedProcess}"  ItemsSource="{Binding ProcessesList}" VerticalAlignment="Center" HorizontalAlignment="Right" Width="400" Height="20" Grid.Row="0"/>
 
-            <Label Content="Select DD2 process:" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0"/>
-            <ComboBox x:Name="processesList" SelectedItem="{Binding SelectedProcess}"  ItemsSource="{Binding ProcessesList}" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Width="145" Height="20" Grid.Row="0"/>
+                    <Label Content="Select driver's json:" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1"/>
+                    <ComboBox x:Name="driverJsonList" SelectedItem="{Binding JsonDriversPath}"  ItemsSource="{Binding DriverJsonList}" HorizontalAlignment="Right" VerticalAlignment="Center"  Width="400" Height="20" Grid.Row="1"/>
 
-            <Label Content="Select driver's json:" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1"/>
-            <ComboBox x:Name="driverJsonList" SelectedItem="{Binding JsonDriversPath}"  ItemsSource="{Binding DriverJsonList}" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Width="145" Height="20" Grid.Row="1"/>
-            
-            <Label Content="Select map's json:" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2"/>
-            <ComboBox x:Name="mapJsonList" SelectedItem="{Binding JsonMapsPath}"  ItemsSource="{Binding MapJsonList}" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Width="145" Height="20" Grid.Row="2"/>
+                    <Label Content="Select map's json:" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2"/>
+                    <ComboBox x:Name="mapJsonList" SelectedItem="{Binding JsonMapsPath}"  ItemsSource="{Binding MapJsonList}" HorizontalAlignment="Right" VerticalAlignment="Center"  Width="400" Height="20" Grid.Row="2"/>
 
-            <Button x:Name="autoconfig" Command="{Binding AutoConfigCommand}"  Margin="0,5,0,0" Content="AutoConfig DD2SBR" HorizontalAlignment="Center" VerticalAlignment="Top" Width="140" Height="20" Grid.Row="3"/>
-            <Button x:Name="loadconfig" Command="{Binding LoadConfigCommand}" Content="Start Scoreboard" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="140" Height="30" Grid.Row="3"/>
-            
-            <Label Content="Mod Options:" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4"/>
+                    <Button x:Name="autoconfig" Command="{Binding AutoConfigCommand}"  Margin="0,5,0,0" Content="AutoConfig DD2SBR" HorizontalAlignment="Center" VerticalAlignment="Top" Width="140" Height="20" Grid.Row="3"/>
+                    <Button x:Name="loadconfig" Command="{Binding LoadConfigCommand}" Content="Load Config" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="140" Height="30" Grid.Row="3"/>
 
+                    <Label Content="Mod Options:" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4"/>
 
-            <CheckBox x:Name="lapnumbercheck" IsChecked="{Binding LapModeActive, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True}" Content="Lap Mod" HorizontalAlignment="Left" VerticalAlignment="Top" Height="15" Width="100" Margin="5,0,0,0"  Grid.Row="5"/>
-            <TextBox x:Name="lapnumber" Text="{Binding LapLimit, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True}" Height="20" Width="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="5,0,0,0"  Grid.Row="5"/>
-            <ComboBox x:Name="maplist" SelectedItem="{Binding SelectedMap}"  ItemsSource="{Binding MapList}" DisplayMemberPath="MapName"  HorizontalAlignment="Right" VerticalAlignment="Bottom"  Width="110" Height="20" Margin="0,0,5,0"  Grid.Row="5"/>
-
-            <CheckBox Content="Ingame Overlay &#xA;(only DOSBox &#xA;supported)" HorizontalAlignment="Left" VerticalAlignment="Top" Width="140" Height="50"  Margin="5,5,0,0" IsEnabled="False"  Grid.Row="6"/>
-
-        </Grid>
-
-        <Grid Grid.Column="1">
-            <ListView Name="carlist"  ItemsSource="{Binding CarList}">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Width="55" Header="Position" DisplayMemberBinding="{Binding Position}" />
-                        <GridViewColumn Width="80" Header="Picture" CellTemplate="{DynamicResource PhotoCell}" />
-                        <GridViewColumn Width="55" Header="Number" DisplayMemberBinding="{Binding Number}" />
-                        <GridViewColumn Width="150" Header="Name" DisplayMemberBinding="{Binding Name}" />
-                        <GridViewColumn Width="25" Header="Lap" DisplayMemberBinding="{Binding LapNumber}" />
-                        <GridViewColumn Width="50" Header="Distance" DisplayMemberBinding="{Binding Distance}" />
-                        <GridViewColumn Width="50" Header="CurrChemp" DisplayMemberBinding="{Binding CurrChempScore}" />
-                        <GridViewColumn Width="50" Header="PrevChemp" DisplayMemberBinding="{Binding PrevChempScore}" />
-                    </GridView>
-                </ListView.View>
-            </ListView>
-        </Grid>
+                    <StackPanel  Grid.Row="5" Orientation="Horizontal">
+                        <CheckBox x:Name="lapnumbercheck" IsChecked="{Binding LapModeActive, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True}" Content="Lap Mod" Height="15" Width="100"/>
+                        <TextBox x:Name="lapnumber" Text="{Binding LapLimit, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True}" Height="20" Width="30"/>
+                        <ComboBox x:Name="maplist" SelectedItem="{Binding SelectedMap}"  ItemsSource="{Binding MapList}" DisplayMemberPath="MapName"  Width="110" Height="20"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Standard Scoreboard" >
+                <Grid>
+                    <ListView Name="carlist"  ItemsSource="{Binding CarList}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="55" Header="Position" DisplayMemberBinding="{Binding Position}" />
+                                <GridViewColumn Width="80" Header="Picture" CellTemplate="{DynamicResource PhotoCell}" />
+                                <GridViewColumn Width="55" Header="Number" DisplayMemberBinding="{Binding Number}" />
+                                <GridViewColumn Width="150" Header="Name" DisplayMemberBinding="{Binding Name}" />
+                                <GridViewColumn Width="25" Header="Lap" DisplayMemberBinding="{Binding LapNumber}" />
+                                <GridViewColumn Width="50" Header="Distance" DisplayMemberBinding="{Binding Distance}" />
+                                <GridViewColumn Width="50" Header="CurrChemp" DisplayMemberBinding="{Binding CurrChempScore}" />
+                                <GridViewColumn Width="50" Header="PrevChemp" DisplayMemberBinding="{Binding PrevChempScore}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Championship Scoreboard">
+                
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
