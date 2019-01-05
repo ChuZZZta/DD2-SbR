@@ -125,15 +125,19 @@ namespace Sbr.ViewModels
         public List<string> DriverJsonList { get; set; } = new List<string>();
         public List<string> MapJsonList { get; set; } = new List<string>();
         public ObservableCollection<Map> MapList { get; set; } = new ObservableCollection<Map>();
+
         public List<Car> CarList { get; set; } = new List<Car>();
 
-        //Variables
+        public List<Car> Division1 { get; set; } = new List<Car>();
+        public List<Car> Division2 { get; set; } = new List<Car>();
+        public List<Car> Division3 { get; set; } = new List<Car>();
+        public List<Car> Division4 { get; set; } = new List<Car>();
+        //Timers
 
         DispatcherTimer dt;
 
         //Commands
         
-
         public void LoadConfig()
         {
             MapJsonList.Clear(); //clearing lists
@@ -195,12 +199,17 @@ namespace Sbr.ViewModels
             String json = sr.ReadToEnd();
             cars = JsonConvert.DeserializeObject<Car[]>(json);
 
-            foreach (Car car in cars)
+            foreach (Car car in cars) //filling stanrad list
             {
                 car.Processname = SelectedProcess;
                 car.Picture = picturesPath+car.Number+".jpg";
                 CarList.Add(car);
             }
+            //filling divsions
+            Division1.AddRange(cars.Where(x => new[] { 1, 3, 7, 10, 16 }.Contains(x.Id)));
+            Division2.AddRange(cars.Where(x => new[] { 2, 4, 8, 11, 14 }.Contains(x.Id)));
+            Division3.AddRange(cars.Where(x => new[] { 18, 19, 5, 13, 17 }.Contains(x.Id)));
+            Division4.AddRange(cars.Where(x => new[] { 0, 6, 9, 12, 15 }.Contains(x.Id)));
         }
         private void GetTrackNames()
         {
@@ -214,6 +223,7 @@ namespace Sbr.ViewModels
             {
                 MapList.Add(map);
             }
+
         }
         
         private void UpdateScore(object sender, EventArgs e)

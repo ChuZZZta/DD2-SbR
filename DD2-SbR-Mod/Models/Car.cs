@@ -25,19 +25,25 @@ namespace Sbr.Models
         
         public string Processname { get; set; }
 
+        public static bool isNewSeason = false;
+
+        private static List<int> ScorePoints = new List<int>() { 999,100,75,50,40,35,30,25,20,15,10,9,8,7,6,5,4,3,2,1,0};
+
         //memories variables
         public int LapNumber { get; set; } = 1;
         public int Distance { get; set; } = 1;
         public int PositionRead { get; set; } = 1;
         public int Position { get; set; } = 1;
-        public int CurrChempScore { get; set; } = 1;
+        public int TotalChempScore { get; set; } = 1;
         public int PrevChempScore { get; set; } = 1;
+        public int CurrChempScore { get; set; } = 1;
+        public int FutureChempScore { get; set; } = 1;
 
         /* Addreses in memmory:
          *  RaceMemoryAddress                lap count
          *  RaceMemoryAddress - 0x6          postion
          *  RaceMemoryAddress + 0x2          lap distance
-         *  ChempionshipMemoryAddress        current chemp score
+         *  ChempionshipMemoryAddress        total chemp score
          *  ChempionshipMemoryAddress + 0xC  prev chemp score
          */
 
@@ -47,8 +53,10 @@ namespace Sbr.Models
             IMemoryRW rw = new MemoryRW(Processname);
             PositionRead = rw.GetByte(RaceMemoryAddress - 0x6);
             Distance = rw.GetByte(RaceMemoryAddress + 0x2);
-            CurrChempScore = rw.GetByte(ChempionshipMemoryAddress);
+            TotalChempScore = rw.GetByte(ChempionshipMemoryAddress);
             PrevChempScore = rw.GetByte(ChempionshipMemoryAddress+0xC);
+            CurrChempScore = ScorePoints[PositionRead];
+            FutureChempScore = TotalChempScore + CurrChempScore;
             if (config)
             {
                 if( rw.GetByte(RaceMemoryAddress) > 1 && LapNumber != SetLap)
