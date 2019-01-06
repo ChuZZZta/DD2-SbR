@@ -22,11 +22,16 @@ namespace Sbr.ViewModels
         //CTOR
         public MainViewModel()
         {
-            dt = new DispatcherTimer
+            DTStandard = new DispatcherTimer
             {
                 Interval = TimeSpan.FromSeconds(1)
             };
-            dt.Tick += UpdateScore;
+            DTStandard.Tick += UpdateStandard;
+            DTChempioship = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(1)
+            };
+            DTChempioship.Tick += UpdateChampionship;
             this.LoadConfigCommand = new LoadConfigCommand(this);
             this.AutoConfigCommand = new AutoConfigCommand(this);
             AutoConfig();
@@ -36,7 +41,7 @@ namespace Sbr.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
         void OnPropertyChange(string propertyName)
         {
-            if(PropertyChanged != null)
+            if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
@@ -47,9 +52,11 @@ namespace Sbr.ViewModels
 
         //Binded properties
         private string jsonDriversPath = "";
-        public string JsonDriversPath{
+        public string JsonDriversPath
+        {
             get { return jsonDriversPath; }
-            set{
+            set
+            {
                 jsonDriversPath = value;
                 OnPropertyChange("JsonDriversPath");
             }
@@ -65,17 +72,21 @@ namespace Sbr.ViewModels
             }
         }
         private bool lapModeActive = false;
-        public bool LapModeActive {
+        public bool LapModeActive
+        {
             get { return lapModeActive; }
-            set {
+            set
+            {
                 lapModeActive = value;
                 OnPropertyChange("LapModeActive");
             }
         }
         private byte lapLimit = 0;
-        public byte LapLimit {
+        public byte LapLimit
+        {
             get { return lapLimit; }
-            set {
+            set
+            {
                 lapLimit = value;
                 OnPropertyChange("LapLimit");
             }
@@ -107,10 +118,16 @@ namespace Sbr.ViewModels
                 switch (value)
                 {
                     case 0:
-                        dt.Stop();
+                        DTStandard.Stop();
+                        DTChempioship.Stop();
                         break;
                     case 1:
-                        dt.Start();
+                        DTChempioship.Stop();
+                        DTStandard.Start();
+                        break;
+                    case 2:
+                        DTStandard.Stop();
+                        DTChempioship.Start();
                         break;
                     default:
                         break;
@@ -128,23 +145,25 @@ namespace Sbr.ViewModels
 
         public List<Car> CarList { get; set; } = new List<Car>();
 
+        public bool seasonChanged = false;
         public List<Car> Division1 { get; set; } = new List<Car>();
         public List<Car> Division2 { get; set; } = new List<Car>();
         public List<Car> Division3 { get; set; } = new List<Car>();
         public List<Car> Division4 { get; set; } = new List<Car>();
         //Timers
 
-        DispatcherTimer dt;
+        DispatcherTimer DTStandard;
+        DispatcherTimer DTChempioship;
 
         //Commands
-        
+
         public void LoadConfig()
         {
             MapJsonList.Clear(); //clearing lists
             GetCarInfo();
             GetTrackNames();
         }
-        
+
 
         public void AutoConfig()
         {
@@ -156,11 +175,11 @@ namespace Sbr.ViewModels
             //loading file paths to lists
             string[] driversjson = Directory.GetFiles(Directory.GetCurrentDirectory() + "\\Resources\\Json\\Driver");
             string[] mapsjson = Directory.GetFiles(Directory.GetCurrentDirectory() + "\\Resources\\Json\\Map");
-            foreach(string s in driversjson) { DriverJsonList.Add(s); }
+            foreach (string s in driversjson) { DriverJsonList.Add(s); }
             foreach (string s in mapsjson) { MapJsonList.Add(s); }
             //autoconfig driver and map json
-            Log("Found driver's jsons: " +driversjson.Length+", found map's jsons: "+mapsjson.Length);
-            Log("Setting app for: \n" + mapsjson[0]+ " \n" + driversjson[0]);
+            Log("Found driver's jsons: " + driversjson.Length + ", found map's jsons: " + mapsjson.Length);
+            Log("Setting app for: \n" + mapsjson[0] + " \n" + driversjson[0]);
             JsonDriversPath = driversjson[0];
             JsonMapsPath = mapsjson[0];
             //getting running process and filtring it
@@ -202,7 +221,7 @@ namespace Sbr.ViewModels
             foreach (Car car in cars) //filling stanrad list
             {
                 car.Processname = SelectedProcess;
-                car.Picture = picturesPath+car.Number+".jpg";
+                car.Picture = picturesPath + car.Number + ".jpg";
                 CarList.Add(car);
             }
             //filling divsions
@@ -213,7 +232,7 @@ namespace Sbr.ViewModels
         }
         private void GetTrackNames()
         {
-            
+
             Map[] maps = new Map[7];
             StreamReader sr = new StreamReader(JsonMapsPath);
 
@@ -225,21 +244,69 @@ namespace Sbr.ViewModels
             }
 
         }
-        
-        private void UpdateScore(object sender, EventArgs e)
+        //Timers methods
+        private void UpdateStandard(object sender, EventArgs e)
         {
             //Updating car's meemory data 
             foreach (Car car in CarList) car.Update(LapLimit, LapModeActive, SelectedMap);
-            
+
             //sort metod depends on used mode
             if (LapModeActive) CarList = CarList.OrderByDescending(x => x.LapNumber).ThenBy(x => x.PositionRead).ToList();
             else CarList = CarList.OrderBy(x => x.PositionRead).ToList();
-            
+
             //repostion cars du to lack of better methodes on having position on view
             for (int i = 0; i < 20; i++) CarList[i].Position = i + 1;
 
             //getting view know that it changed
             OnPropertyChange("CarList");
+        }
+        private void UpdateChampionship(object sender, EventArgs e)
+        {
+            foreach (Car car in Division1) car.UpdateChampionship();
+            foreach (Car car in Division2) car.UpdateChampionship();
+            foreach (Car car in Division3) car.UpdateChampionship();
+            foreach (Car car in Division4) car.UpdateChampionship();
+            if (Car.isNewSeason!=seasonChanged)
+            {
+                if (!seasonChanged)
+                {
+                    //usuniecie awansow
+                    Car d2promo = Division2.First();
+                    Division2.Remove(d2promo);
+                    Car d3promo = Division3.First();
+                    Division3.Remove(d3promo);
+                    Car d4promo = Division4.First();
+                    Division4.Remove(d4promo);
+
+                    //spadki
+                    Division4.Add(Division3.Last());
+                    Division3.Remove(Division3.Last());
+
+                    Division3.Add(Division2.Last());
+                    Division2.Remove(Division2.Last());
+
+                    Division2.Add(Division1.Last());
+                    Division1.Remove(Division1.Last());
+
+                    //dodanie awansow
+                    Division1.Add(d2promo);
+                    Division2.Add(d3promo);
+                    Division3.Add(d4promo);
+
+                    seasonChanged = true;
+                }
+                else seasonChanged = false;
+            }
+            
+            Division1 = Division1.OrderByDescending(x => x.TotalChempScore).ToList();
+            Division2 = Division2.OrderByDescending(x => x.TotalChempScore).ToList();
+            Division3 = Division3.OrderByDescending(x => x.TotalChempScore).ToList();
+            Division4 = Division4.OrderByDescending(x => x.TotalChempScore).ToList();
+
+            OnPropertyChange("Division1");
+            OnPropertyChange("Division2");
+            OnPropertyChange("Division3");
+            OnPropertyChange("Division4");
         }
     }
 }

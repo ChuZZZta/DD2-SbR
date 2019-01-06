@@ -7,7 +7,7 @@
         xmlns:ViewModels="clr-namespace:Sbr.ViewModels" x:Class="Sbr.MainView"
         mc:Ignorable="d"
         Title="DD2 SbR Mod by ChuZZZta" Height="800" Width="600" Background="White" ResizeMode="NoResize">
-    
+
     <Window.DataContext>
         <ViewModels:MainViewModel/>
     </Window.DataContext>
@@ -19,7 +19,12 @@
     </Window.Resources>
 
     <Grid>
-        <TabControl SelectedIndex="{Binding SelectedTabIndex, Mode=TwoWay}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="98*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl SelectedIndex="{Binding SelectedTabIndex, Mode=TwoWay}" Grid.ColumnSpan="3">
             <TabItem Header="Config">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -82,7 +87,7 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <ListView Name="division1" Grid.Row="0" Grid.Column="0" ItemsSource="{Binding Division1}">
+                    <ListView Name="division" Grid.Row="0" Grid.Column="0" ItemsSource="{Binding Division1}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Width="30" Header="Img" CellTemplate="{DynamicResource PhotoCell}" />

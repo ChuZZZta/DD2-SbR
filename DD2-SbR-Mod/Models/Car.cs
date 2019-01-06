@@ -22,10 +22,10 @@ namespace Sbr.Models
         public int RaceMemoryAddress { get; set; }
         [JsonProperty("ChempionshipMemoryAddress")]
         public int ChempionshipMemoryAddress { get; set; }
-        
-        public string Processname { get; set; }
 
         public static bool isNewSeason = false;
+        
+        public string Processname { get; set; }
 
         private static List<int> ScorePoints = new List<int>() { 999,100,75,50,40,35,30,25,20,15,10,9,8,7,6,5,4,3,2,1,0};
 
@@ -73,6 +73,18 @@ namespace Sbr.Models
             {
                 LapNumber = rw.GetByte(RaceMemoryAddress);
             }
+        }
+        public void UpdateChampionship()
+        {
+            IMemoryRW rw = new MemoryRW(Processname);
+            PositionRead = rw.GetByte(RaceMemoryAddress - 0x6);
+            TotalChempScore = rw.GetByte(ChempionshipMemoryAddress);
+            PrevChempScore = rw.GetByte(ChempionshipMemoryAddress + 0xC);
+            CurrChempScore = ScorePoints[PositionRead];
+            FutureChempScore = TotalChempScore + CurrChempScore;
+            // xDDD very nice season check - i fix it later
+            if (TotalChempScore < PrevChempScore) isNewSeason = true;
+            else isNewSeason = false;
         }
         public override string ToString()
         {
