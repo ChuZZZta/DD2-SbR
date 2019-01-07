@@ -37,6 +37,7 @@ namespace Sbr.ViewModels
             AutoConfig();
         }
 
+
         //Implemented intefaces for binding and command
         public event PropertyChangedEventHandler PropertyChanged;
         void OnPropertyChange(string propertyName)
@@ -118,16 +119,23 @@ namespace Sbr.ViewModels
                 switch (value)
                 {
                     case 0:
+                        IsConfigDone = false;
                         DTStandard.Stop();
                         DTChempioship.Stop();
                         break;
                     case 1:
                         DTChempioship.Stop();
-                        DTStandard.Start();
+                        if (IsConfigDone)
+                        {
+                           DTStandard.Start();
+                        }
                         break;
                     case 2:
                         DTStandard.Stop();
-                        DTChempioship.Start();
+                        if (IsConfigDone)
+                        {
+                           DTChempioship.Start();
+                        }
                         break;
                     default:
                         break;
@@ -135,6 +143,9 @@ namespace Sbr.ViewModels
             }
         }
 
+        //Variables
+
+        private bool IsConfigDone = false;
 
         //Binded Lists
 
@@ -159,9 +170,17 @@ namespace Sbr.ViewModels
 
         public void LoadConfig()
         {
-            MapJsonList.Clear(); //clearing lists
+            //clearing lists
+            MapList.Clear();
+            CarList.Clear();
+            Division1.Clear();
+            Division2.Clear();
+            Division3.Clear();
+            Division4.Clear();
+
             GetCarInfo();
             GetTrackNames();
+            IsConfigDone = true;
         }
 
 

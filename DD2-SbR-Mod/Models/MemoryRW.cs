@@ -28,7 +28,6 @@ namespace Sbr.Models
 
         public int GetByte(int offset)
         {
-
             Process process = Process.GetProcessesByName(processname)[0];
             IntPtr processHandle = OpenProcess(0x0010, false, process.Id);
             int address = (int)process.MainModule.BaseAddress + offset; // calculating the current position of variable
