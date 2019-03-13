@@ -1,0 +1,162 @@
+[
+    {
+	"Id" : 0,
+    "Name": "Player",
+    "Numer": "001",
+    "PicturePath":"../img/master.jpg",
+    "RaceMemoryAddress":0x2169714,
+	"ChempionshipMemoryAddress":0x2153388
+	},
+    {
+	"Id" : 1,
+    "Name": "The Master",
+    "Numer": "000",
+    "PicturePath":"../img/master.jpg",
+    "RaceMemoryAddress":0x2169728,
+	"ChempionshipMemoryAddress":0x21533BE
+	},
+    {
+	"Id" : 2,
+    "Name": "The Thrashman",
+    "Numer": "007",
+    "PicturePath":"../img/master.jpg",
+    "RaceMemoryAddress":0x216973C,
+	"ChempionshipMemoryAddress":0x21533F4
+	},
+    {
+	"Id" : 3,
+    "Name": "Skum",
+    "Numer": "013",
+    "PicturePath":"../img/master.jpg",
+    "RaceMemoryAddress":0x2169750,
+	"ChempionshipMemoryAddress":0x215342A
+	},
+    {
+	"Id" : 4,
+    "Name": "The Pro",
+    "Numer": "017",
+    "PicturePath":"../img/master.jpg",
+    "RaceMemoryAddress":0x2169764,
+	"ChempionshipMemoryAddress":0x2153460
+	},
+    {
+	"Id" : 5,
+    "Name": "The Goddess",
+    "Numer": "035",
+    "PicturePath":"../img/master.jpg",
+    "RaceMemoryAddress":0x2169778,
+	"ChempionshipMemoryAddress":0x2153496
+	},
+    {
+	"Id" : 6,
+    "Name": "The Learner Driver",
+    "Numer": "037",
+    "PicturePath":"../img/master.jpg",
+    "RaceMemoryAddress":0x216978C,
+	"ChempionshipMemoryAddress":0x21534CC
+	},
+    {
+	"Id" : 7,
+    "Name": "The Psycho",
+    "Numer": "040",
+    "PicturePath":"../img/master.jpg",
+    "RaceMemoryAddress":0x21697A0,
+	"ChempionshipMemoryAddress":0x2153502
+	},
+    {
+	"Id" : 8,
+    "Name": "The Chief",
+    "Numer": "042",
+    "PicturePath":"../img/master.jpg",
+    "RaceMemoryAddress":0x21697B4,
+	"ChempionshipMemoryAddress":0x2153538
+	},
+    {
+	"Id" : 9,
+    "Name": "The Optician",
+    "Numer": "047",
+    "PicturePath":"../img/master.jpg",
+    "RaceMemoryAddress":0x21697C8,
+	"ChempionshipMemoryAddress":0x215356E
+	},
+    {
+	"Id" : 10,
+    "Name": "The General",
+    "Numer": "050",
+    "PicturePath":"../img/master.jpg",
+    "RaceMemoryAddress":0x21697DC,
+	"ChempionshipMemoryAddress":0x21535A4
+	},
+    {
+	"Id" : 11,
+    "Name": "Heavy Metal Hero",
+    "Numer": "052",
+    "PicturePath":"../img/master.jpg",
+    "RaceMemoryAddress":0x21697F0,
+	"ChempionshipMemoryAddress":0x21535DA
+	},
+    {
+	"Id" : 12,
+    "Name": "Barmy Army",
+    "Numer": "053",
+    "PicturePath":"../img/master.jpg",
+    "RaceMemoryAddress":0x2169804,
+	"ChempionshipMemoryAddress":0x2153610
+	},
+   {
+	"Id" : 13,
+    "Name": "Pyromaniac",
+    "Numer": "064",
+    "PicturePath":"../img/master.jpg",
+    "RaceMemoryAddress":0x2169818,
+	"ChempionshipMemoryAddress":0x2153646
+	},
+    {
+	"Id" : 14,
+    "Name": "The Beast",
+    "Numer": "066",
+    "PicturePath":"../img/master.jpg",
+    "RaceMemoryAddress":0x216982C,
+	"ChempionshipMemoryAddress":0x215367C
+	},
+    {
+	"Id" : 15,
+    "Name": "Passion Wagon",
+    "Numer": "069",
+    "PicturePath":"../img/master.jpg",
+    "RaceMemoryAddress":0x2169840,
+	"ChempionshipMemoryAddress":0x21536B2
+	},
+    {
+	"Id" : 16,
+    "Name": "The Undertaker",
+    "Numer": "077",
+    "PicturePath":"../img/master.jpg",
+    "RaceMemoryAddress":0x2169854,
+	"ChempionshipMemoryAddress":0x21536E8
+	},
+    {
+	"Id" : 17,
+    "Name": "Suicide Squad",
+    "Numer": "082",
+    "PicturePath":"../img/master.jpg",
+    "RaceMemoryAddress":0x2169868,
+	"ChempionshipMemoryAddress":0x215371E
+	},
+    {
+	"Id" : 18,
+    "Name": "The Bouncer",
+    "Numer": "088",
+    "PicturePath":"../img/master.jpg",
+    "RaceMemoryAddress":0x216987C,
+	"ChempionshipMemoryAddress":0x2153754
+	},
+    {
+	"Id" : 19,
+    "Name": "Rivet",
+    "Numer": "099",
+    "PicturePath":"../img/master.jpg",
+    "RaceMemoryAddress":0x2169890,
+	"ChempionshipMemoryAddress":0x215378A
+    }
+  ]

@@ -53,10 +53,10 @@ namespace Sbr.Models
             IMemoryRW rw = new MemoryRW(Processname);
             PositionRead = rw.GetByte(RaceMemoryAddress - 0x6);
             Distance = rw.GetByte(RaceMemoryAddress + 0x2);
-            TotalChempScore = rw.GetByte(ChempionshipMemoryAddress);
-            PrevChempScore = rw.GetByte(ChempionshipMemoryAddress+0xC);
-            CurrChempScore = ScorePoints[PositionRead];
-            FutureChempScore = TotalChempScore + CurrChempScore;
+            //TotalChempScore = rw.GetByte(ChempionshipMemoryAddress);
+            //PrevChempScore = rw.GetByte(ChempionshipMemoryAddress+0xC);
+            //CurrChempScore = ScorePoints[PositionRead];
+            //FutureChempScore = TotalChempScore + CurrChempScore;
             if (config)
             {
                 if( rw.GetByte(RaceMemoryAddress) > 1 && LapNumber != SetLap)
