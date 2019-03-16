@@ -47,7 +47,7 @@
                     <ComboBox x:Name="mapJsonList" SelectedItem="{Binding JsonMapsPath}"  ItemsSource="{Binding MapJsonList}" HorizontalAlignment="Right" VerticalAlignment="Center"  Width="400" Height="20" Grid.Row="2"/>
 
                     <Button x:Name="autoconfig" Command="{Binding AutoConfigCommand}"  Margin="0,5,0,0" Content="AutoConfig DD2SBR" HorizontalAlignment="Center" VerticalAlignment="Top" Width="140" Height="20" Grid.Row="3"/>
-                    <Button x:Name="loadconfig" Command="{Binding LoadConfigCommand}" Content="Load Config" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="140" Height="30" Grid.Row="3"/>
+                    <Button x:Name="loadconfig" Command="{Binding LoadConfigCommand}" Content="Load Config" HorizontalAlignment="Center" VerticalAlignment="Top" Width="140" Height="30" Grid.Row="3" Margin="224,25,224,0"/>
 
                     <Label Content="Mod Options:" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4"/>
 
@@ -135,6 +135,7 @@
                     </ListView>
                     <StackPanel  Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal">
                         <CheckBox Name="greenscreen" Height="20" VerticalAlignment="Top" Click="GreenScreenChanged">Stream greenscreen mode</CheckBox>
+                        <Button x:Name="resetchamp" Command="{Binding ResetChampCommand}" Content="Reset Championship" HorizontalAlignment="Center" VerticalAlignment="Top" Width="140" Height="20" Grid.Row="3" Margin="200,0,0,0"/>
                     </StackPanel>
                 </Grid>
             </TabItem>

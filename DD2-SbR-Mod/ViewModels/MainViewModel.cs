@@ -34,6 +34,7 @@ namespace Sbr.ViewModels
             DTChempioship.Tick += UpdateChampionship;
             this.LoadConfigCommand = new LoadConfigCommand(this);
             this.AutoConfigCommand = new AutoConfigCommand(this);
+            this.ResetChampCommand = new ResetChampCommand(this);
             AutoConfig();
         }
 
@@ -50,6 +51,7 @@ namespace Sbr.ViewModels
 
         public LoadConfigCommand LoadConfigCommand { get; set; }
         public AutoConfigCommand AutoConfigCommand { get; set; }
+        public ResetChampCommand ResetChampCommand { get; set; }
 
         //Binded properties
         private string jsonDriversPath = "";
@@ -173,10 +175,6 @@ namespace Sbr.ViewModels
             //clearing lists
             MapList.Clear();
             CarList.Clear();
-            Division1.Clear();
-            Division2.Clear();
-            Division3.Clear();
-            Division4.Clear();
 
             GetCarInfo();
             GetTrackNames();
@@ -211,6 +209,18 @@ namespace Sbr.ViewModels
             Log("Autoconfig complited");
         }
 
+        public void ResetChamp()
+        {
+            Division1.Clear();
+            Division2.Clear();
+            Division3.Clear();
+            Division4.Clear();
+            Division1.AddRange(CarList.Where(x => new[] { 1, 3, 7, 10, 16 }.Contains(x.Id)));
+            Division2.AddRange(CarList.Where(x => new[] { 2, 4, 8, 11, 14 }.Contains(x.Id)));
+            Division3.AddRange(CarList.Where(x => new[] { 18, 19, 5, 13, 17 }.Contains(x.Id)));
+            Division4.AddRange(CarList.Where(x => new[] { 0, 6, 9, 12, 15 }.Contains(x.Id)));
+        }
+
         //Methods
 
         void Log(string log)
@@ -237,13 +247,9 @@ namespace Sbr.ViewModels
             cars = JsonConvert.DeserializeObject<Car[]>(json);
             Car.Processname = SelectedProcess;
 
+            //adding cars to lists
             CarList.AddRange(cars);
-            
-            //filling divsions
-            Division1.AddRange(cars.Where(x => new[] { 1, 3, 7, 10, 16 }.Contains(x.Id)));
-            Division2.AddRange(cars.Where(x => new[] { 2, 4, 8, 11, 14 }.Contains(x.Id)));
-            Division3.AddRange(cars.Where(x => new[] { 18, 19, 5, 13, 17 }.Contains(x.Id)));
-            Division4.AddRange(cars.Where(x => new[] { 0, 6, 9, 12, 15 }.Contains(x.Id)));
+            ResetChamp();
         }
         private void GetTrackNames()
         {
