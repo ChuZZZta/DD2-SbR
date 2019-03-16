@@ -231,18 +231,14 @@ namespace Sbr.ViewModels
         private void GetCarInfo()
         {
             Car[] cars = new Car[20];
-            string picturesPath = Directory.GetCurrentDirectory() + "\\Resources\\Img\\";
             StreamReader sr = new StreamReader(JsonDriversPath);
 
             String json = sr.ReadToEnd();
             cars = JsonConvert.DeserializeObject<Car[]>(json);
+            Car.Processname = SelectedProcess;
 
-            foreach (Car car in cars) //filling stanrad list
-            {
-                car.Processname = SelectedProcess;
-                car.Picture = picturesPath + car.Number + ".jpg";
-                CarList.Add(car);
-            }
+            CarList.AddRange(cars);
+            
             //filling divsions
             Division1.AddRange(cars.Where(x => new[] { 1, 3, 7, 10, 16 }.Contains(x.Id)));
             Division2.AddRange(cars.Where(x => new[] { 2, 4, 8, 11, 14 }.Contains(x.Id)));

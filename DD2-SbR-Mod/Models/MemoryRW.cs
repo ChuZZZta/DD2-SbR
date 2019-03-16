@@ -21,16 +21,16 @@ namespace Sbr.Models
         public static extern IntPtr OpenProcess(int dwDesiredAccess, bool bInheritHandle, int dwProcessId);
 
         [DllImport("kernel32.dll")]
-        public static extern bool ReadProcessMemory(int hProcess, int lpBaseAddress, byte[] lpBuffer, int dwSize, ref int lpNumberOfBytesRead);
+        public static extern bool ReadProcessMemory(int hProcess, Int64 lpBaseAddress, byte[] lpBuffer, int dwSize, ref int lpNumberOfBytesRead);
 
         [DllImport("kernel32.dll", SetLastError = true)]
-        static extern bool WriteProcessMemory(int hProcess, int lpBaseAddress, byte[] lpBuffer, int dwSize, ref int lpNumberOfBytesWritten);
+        static extern bool WriteProcessMemory(int hProcess, Int64 lpBaseAddress, byte[] lpBuffer, int dwSize, ref int lpNumberOfBytesWritten);
 
         public int GetByte(int offset)
         {
             Process process = Process.GetProcessesByName(processname)[0];
             IntPtr processHandle = OpenProcess(0x0010, false, process.Id);
-            int address = (int)process.MainModule.BaseAddress + offset; // calculating the current position of variable
+            Int64 address = (Int64)process.MainModule.BaseAddress + offset; // calculating the current position of variable
             int bytesRead = 0;
             byte[] buffer = new byte[2]; //array for 2 bytes
             ReadProcessMemory((int)processHandle, address, buffer, buffer.Length, ref bytesRead);
@@ -41,7 +41,7 @@ namespace Sbr.Models
         {
             Process process = Process.GetProcessesByName(processname)[0];
             IntPtr processHandle = OpenProcess(0x1F0FFF, false, process.Id);
-            int address = (int)process.MainModule.BaseAddress + offset; // calculating the current position of variable
+            Int64 address = (Int64)process.MainModule.BaseAddress + offset; // calculating the current position of variable
             int bytesWritten = 0;
             byte[] buffer = new byte[1];
             buffer[0] = value;
