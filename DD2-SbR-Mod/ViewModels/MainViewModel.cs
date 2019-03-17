@@ -129,7 +129,8 @@ namespace Sbr.ViewModels
                         DTChempioship.Stop();
                         if (IsConfigDone)
                         {
-                           DTStandard.Start();
+                            Car.modConfig = new ModConfig(LapLimit, LapModeActive, SelectedMap); // setting up mod in static var 
+                            DTStandard.Start();
                         }
                         break;
                     case 2:
@@ -269,7 +270,7 @@ namespace Sbr.ViewModels
         private void UpdateStandard(object sender, EventArgs e)
         {
             //Updating car's meemory data 
-            foreach (Car car in CarList) car.Update(LapLimit, LapModeActive, SelectedMap);
+            foreach (Car car in CarList) car.Update();
 
             //sort metod depends on used mode
             if (LapModeActive) CarList = CarList.OrderByDescending(x => x.LapNumber).ThenBy(x => x.PositionRead).ToList();

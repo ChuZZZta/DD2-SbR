@@ -31,7 +31,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -88,6 +88,7 @@
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\Map.cs" />
     <Compile Include="Models\IMemoryRW.cs" />
+    <Compile Include="Models\ModConfig.cs" />
     <Compile Include="ViewModels\Commands\ResetChampCommand.cs" />
     <Compile Include="ViewModels\Commands\AutoConfigCommand.cs" />
     <Compile Include="ViewModels\Commands\LoadConfigCommand.cs" />

@@ -29,6 +29,8 @@ namespace Sbr.Models
 
         private static List<int> ScorePoints = new List<int>() { 999,100,75,50,40,35,30,25,20,15,10,9,8,7,6,5,4,3,2,1,0};
 
+        public static ModConfig modConfig;
+
         //memories variables
         public int LapNumber { get; set; } = 1;
         public int Distance { get; set; } = 1;
@@ -48,21 +50,21 @@ namespace Sbr.Models
          */
 
 
-        public void Update(byte SetLap, bool config, Map map)
+        public void Update()
         {
             IMemoryRW rw = new MemoryRW(Processname);
             PositionRead = rw.GetByte(RaceMemoryAddress - 0x6);
             Distance = rw.GetByte(RaceMemoryAddress + 0x2);
-            if (config)
+            if (modConfig.lapModConfig)
             {
-                if( rw.GetByte(RaceMemoryAddress) > 1 && LapNumber != SetLap)
+                if( rw.GetByte(RaceMemoryAddress) > 1 && LapNumber != modConfig.lapLimit)
                     {
                         LapNumber++;
                         rw.SetByte(RaceMemoryAddress, 1);
                     }
-                if(LapNumber == SetLap)
+                if(LapNumber == modConfig.lapLimit)
                     {
-                        rw.SetByte(RaceMemoryAddress, (byte)map.LapsNumber);
+                        rw.SetByte(RaceMemoryAddress, (byte)modConfig.map.LapsNumber);
                     }
             }
             else
