@@ -41,6 +41,7 @@ namespace Sbr.Models
         public int CurrChempScore { get; set; } = 1;
         public int FutureChempScore { get; set; } = 1;
 
+        public double SortByLapDis = 0;
         /* Addreses in memmory:
          *  RaceMemoryAddress                lap count
          *  RaceMemoryAddress - 0x6          postion
@@ -71,6 +72,7 @@ namespace Sbr.Models
             {
                 LapNumber = rw.GetByte(RaceMemoryAddress);
             }
+            SortByLapDis = LapNumber + ((double)Distance / 1000);
         }
         public void UpdateChampionship()
         {

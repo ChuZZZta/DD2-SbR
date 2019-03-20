@@ -165,6 +165,7 @@ namespace Sbr.ViewModels
         public List<Car> Division2 { get; set; } = new List<Car>();
         public List<Car> Division3 { get; set; } = new List<Car>();
         public List<Car> Division4 { get; set; } = new List<Car>();
+
         ChampionshipSystem champSystem = new ChampionshipSystem();
         StandardSystem standSystem;
         //Timers

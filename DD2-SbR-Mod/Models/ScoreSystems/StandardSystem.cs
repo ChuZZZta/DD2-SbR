@@ -17,14 +17,10 @@ namespace Sbr.Models.ScoreSystems
 
         public void UpdateStandard()
         {
-            //Updating car's meemory data 
             foreach (Car car in CarList) car.Update();
 
-            //sort metod depends on used mode
-            if (Car.modConfig.lapModConfig) CarList = CarList.OrderByDescending(x => x.LapNumber).ThenBy(x => x.PositionRead).ToList();
-            else CarList = CarList.OrderBy(x => x.PositionRead).ToList();
+            CarList = CarList.OrderByDescending(x => x.SortByLapDis).ToList();
 
-            //repostion cars du to lack of better methodes on having position on view
             for (int i = 0; i < 20; i++) CarList[i].Position = i + 1;
         }
     }
