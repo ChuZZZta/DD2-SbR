@@ -22,6 +22,8 @@ namespace Sbr.Models
         public int RaceMemoryAddress { get; set; }
         [JsonProperty("ChempionshipMemoryAddress")]
         public int ChempionshipMemoryAddress { get; set; }
+        [JsonProperty("DamageMemoryAddress")]
+        public int DamageMemoryAddress { get; set; }
 
         public static bool isNewSeason = false;
         
@@ -41,6 +43,17 @@ namespace Sbr.Models
         public int CurrChempScore { get; set; } = 1;
         public int FutureChempScore { get; set; } = 1;
 
+
+
+        public CarDamage DamageModel = new CarDamage();
+        public int FrontRight { get; set; } = 0;
+        public int FrontLeft { get; set; } = 0;
+        public int RearLeft { get; set; } = 0;
+        public int RearRight { get; set; } = 0;
+        public int SideRight { get; set; } = 0;
+        public int SideLeft { get; set; } = 0;
+
+
         public double SortByLapDis = 0;
         /* Addreses in memmory:
          *  RaceMemoryAddress                lap count
@@ -56,6 +69,7 @@ namespace Sbr.Models
             IMemoryRW rw = new MemoryRW(Processname);
             PositionRead = rw.GetByte(RaceMemoryAddress - 0x6);
             Distance = rw.GetByte(RaceMemoryAddress + 0x2);
+            UpdateDamage();
             if (modConfig.lapModConfig)
             {
                 if( rw.GetByte(RaceMemoryAddress) > 1 && LapNumber != modConfig.lapLimit)
@@ -86,6 +100,22 @@ namespace Sbr.Models
             if (TotalChempScore < PrevChempScore) isNewSeason = true;
             else isNewSeason = false;
         }
+
+        public void SetDamageModel()
+        {
+            DamageModel.SetAddresses(DamageMemoryAddress, Processname);
+        }
+
+        void UpdateDamage()
+        {
+            FrontRight = DamageModel.GetFrontRight();
+            FrontLeft = DamageModel.GetFrontLeft();
+            RearLeft = DamageModel.GetRearLeft();
+            RearRight = DamageModel.GetRearRight();
+            SideRight = DamageModel.GetSideRight();
+            SideLeft = DamageModel.GetSideLeft();
+        }
+
         public override string ToString()
         {
             return Name+" " + Number + ", lap number: "+LapNumber;

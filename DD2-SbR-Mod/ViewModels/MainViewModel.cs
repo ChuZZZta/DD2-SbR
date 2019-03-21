@@ -249,6 +249,7 @@ namespace Sbr.ViewModels
             //adding cars to lists
             CarList.AddRange(cars);
             ResetChamp();
+            foreach (Car car in CarList) car.SetDamageModel();
         }
         private void GetTrackNames()
         {

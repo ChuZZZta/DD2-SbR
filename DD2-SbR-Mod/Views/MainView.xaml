@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Sbr"
         xmlns:ViewModels="clr-namespace:Sbr.ViewModels" x:Class="Sbr.MainView"
         mc:Ignorable="d"
-        Title="DD2 SbR Mod by ChuZZZta" Height="800" Width="600" Background="White" ResizeMode="NoResize">
+        Title="DD2 SbR Mod by ChuZZZta" Height="800" Width="750" Background="White" ResizeMode="NoResize">
 
     <Window.DataContext>
         <ViewModels:MainViewModel/>
@@ -69,6 +69,12 @@
                                 <GridViewColumn Width="150" Header="Name" DisplayMemberBinding="{Binding Name}" />
                                 <GridViewColumn Width="25" Header="Lap" DisplayMemberBinding="{Binding LapNumber}" />
                                 <GridViewColumn Width="50" Header="Distance" DisplayMemberBinding="{Binding Distance}" />
+                                <GridViewColumn Width="50" Header="FroRigh" DisplayMemberBinding="{Binding FrontRight}" />
+                                <GridViewColumn Width="50" Header="FroLef" DisplayMemberBinding="{Binding FrontLeft}" />
+                                <GridViewColumn Width="50" Header="SidRigh" DisplayMemberBinding="{Binding SideRight}" />
+                                <GridViewColumn Width="50" Header="SidLef" DisplayMemberBinding="{Binding SideLeft}" />
+                                <GridViewColumn Width="50" Header="ReaLef" DisplayMemberBinding="{Binding RearLeft}" />
+                                <GridViewColumn Width="50" Header="ReaRigh" DisplayMemberBinding="{Binding RearRight}" />
                             </GridView>
                         </ListView.View>
                     </ListView>
