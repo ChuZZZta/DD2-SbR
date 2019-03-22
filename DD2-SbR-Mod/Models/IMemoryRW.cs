@@ -8,7 +8,7 @@ namespace Sbr.Models
 {
     public interface IMemoryRW
     {
-        void SetByte(int offset, byte value);
+        void SetByte(int offset, int value);
         int GetByte(int offset);
     }
 }

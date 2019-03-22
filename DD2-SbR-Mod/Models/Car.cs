@@ -79,7 +79,7 @@ namespace Sbr.Models
                     }
                 if(LapNumber == modConfig.lapLimit)
                     {
-                        rw.SetByte(RaceMemoryAddress, (byte)modConfig.map.LapsNumber);
+                        rw.SetByte(RaceMemoryAddress, modConfig.map.LapsNumber);
                     }
             }
             else

@@ -51,57 +51,77 @@ namespace Sbr.Models
             RearRight = SideRight + 0x4;
             RearLeft = RearRight + 0x8;
             SideLeft = RearLeft + 0x8;
+
+            SteeringIssue = SideLeft + 0x10 ;
+            SteeringPower = SteeringIssue + 0x4;
+            AccVar = SteeringPower + 0x4;
+
+            RearRightWheel = AccVar + 0x4;
+            RearLeftWheel = RearRightWheel + 0x4;
+            FrontRightWheel = RearLeftWheel + 0x4;
+            FrontLeftWheel = FrontRightWheel + 0x4;
+
+            FrontLeftSuspen = FrontLeftWheel + 0x10;
+            RearLeftSuspen = FrontLeftSuspen + 0x4;
+            FrontRightSuspen = RearLeftSuspen + 0x4;
+            RearRightSuspen = FrontRightSuspen + 0x4;
         }
 
         public int GetFrontLeft()
         {
-            return rw.GetByte(FrontLeft);
+            return Convert.ToInt32(rw.GetByte(FrontLeft) / 40.96);
         }
         public int GetFrontRight()
         {
-            return rw.GetByte(FrontRight);
+            return Convert.ToInt32(rw.GetByte(FrontRight) / 40.96);
         }
         public int GetSideRight()
         {
-            return rw.GetByte(SideRight);
+            return Convert.ToInt32(rw.GetByte(SideRight) / 40.96);
         }
         public int GetSideLeft()
         {
-            return rw.GetByte(SideLeft);
+            return Convert.ToInt32(rw.GetByte(SideLeft) / 40.96);
         }
         public int GetRearLeft()
         {
-            return rw.GetByte(RearLeft);
+            return Convert.ToInt32(rw.GetByte(RearLeft) / 40.96);
         }
         public int GetRearRight()
         {
-            return rw.GetByte(RearRight);
+            return Convert.ToInt32(rw.GetByte(RearRight) / 40.96);
         }
 
 
         public void SetFrontLeft(int percent)
         {
-            
+            int val = Convert.ToInt16(percent * 40.96);
+            rw.SetByte(FrontLeft, val);
         }
         public void SetFrontRight(int percent)
         {
-            
+            int val = Convert.ToInt16(percent * 40.96);
+            rw.SetByte(FrontRight, val);
         }
         public void SetSideRight(int percent)
         {
-            
+            int val = Convert.ToInt16(percent * 40.96);
+            rw.SetByte(SideRight, val);
         }
         public void SetSideLeft(int percent)
         {
-            
+            int val = Convert.ToInt16(percent * 40.96);
+            rw.SetByte(SideLeft, val);
         }
         public void SetRearLeft(int percent)
         {
-            
+            int val = Convert.ToInt16(percent * 40.96);
+            rw.SetByte(RearLeft, val);
         }
         public void SetRearRight(int percent)
         {
-            
+            int val = Convert.ToInt16(percent * 40.96);
+            rw.SetByte(RearRight, val);
         }
     }
 }

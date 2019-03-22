@@ -37,15 +37,14 @@ namespace Sbr.Models
             return BitConverter.ToInt16(buffer, 0); //converting byte array to int 
         }
 
-        public void SetByte(int offset,byte value)
+        public void SetByte(int offset,int value)
         {
             Process process = Process.GetProcessesByName(processname)[0];
             IntPtr processHandle = OpenProcess(0x1F0FFF, false, process.Id);
             Int64 address = (Int64)process.MainModule.BaseAddress + offset; // calculating the current position of variable
             int bytesWritten = 0;
-            byte[] buffer = new byte[1];
-            buffer[0] = value;
-            WriteProcessMemory((int)processHandle, address, buffer, buffer.Length, ref bytesWritten);
+            byte[] bytes = BitConverter.GetBytes((Int16)value);
+            WriteProcessMemory((int)processHandle, address, bytes, bytes.Length, ref bytesWritten);
         }
     }
 }
