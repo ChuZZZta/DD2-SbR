@@ -167,7 +167,7 @@ namespace Sbr.ViewModels
                         DTChempioship.Stop();
                         if (IsConfigDone)
                         {
-                            Car.modConfig = new ModConfig(LapModeActive, LapLimit, MapList, EliminateModeActive, EliminateSec, SurpriseModeActive, SurpriseSec); // setting up mod in static var 
+                            Car.ModConfig = new ModConfig(LapModeActive, LapLimit, MapList, EliminateModeActive, EliminateSec, SurpriseModeActive, SurpriseSec); // setting up mod in static var 
                             DTStandard.Start();
                         }
                         break;

@@ -31,7 +31,7 @@ namespace Sbr.Models
 
         private static List<int> ScorePoints = new List<int>() { 999,100,75,50,40,35,30,25,20,15,10,9,8,7,6,5,4,3,2,1,0};
 
-        public static ModConfig modConfig;
+        public static ModConfig ModConfig;
 
         IMemoryRW rw;
 
@@ -73,7 +73,7 @@ namespace Sbr.Models
             Distance = rw.GetByte(RaceMemoryAddress + 0x2);
             UpdateDamage();
 
-            ReadLapNumber(modConfig.lapModConfig);
+            ReadLapNumber(ModConfig.lapModConfig);
 
             SortByLapDis = LapNumber + ((double)Distance / 1000);
         }
@@ -111,14 +111,14 @@ namespace Sbr.Models
             if (lapmode)
             {
                 mapId = rw.GetByte(Map.SelectedMapAddress);
-                if (rw.GetByte(RaceMemoryAddress) > 1 && LapNumber != modConfig.lapLimit)
+                if (rw.GetByte(RaceMemoryAddress) > 1 && LapNumber != ModConfig.lapLimit)
                 {
                     LapNumber++;
                     rw.SetByte(RaceMemoryAddress, 1);
                 }
-                if (LapNumber == modConfig.lapLimit - 1)
+                if (LapNumber == ModConfig.lapLimit - 1)
                 {
-                    rw.SetByte(RaceMemoryAddress, modConfig.MapList[mapId].LapsNumber);
+                    rw.SetByte(RaceMemoryAddress, ModConfig.MapList[mapId].LapsNumber);
                 }
             }
             else
