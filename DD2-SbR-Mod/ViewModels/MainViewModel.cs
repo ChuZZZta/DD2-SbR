@@ -56,26 +56,8 @@ namespace Sbr.ViewModels
         public ResetChampCommand ResetChampCommand { get; set; }
 
         //Binded properties
-        private string jsonDriversPath = "";
-        public string JsonDriversPath
-        {
-            get { return jsonDriversPath; }
-            set
-            {
-                jsonDriversPath = value;
-                OnPropertyChange("JsonDriversPath");
-            }
-        }
-        private string jsonMapsPath = "";
-        public string JsonMapsPath
-        {
-            get { return jsonMapsPath; }
-            set
-            {
-                jsonMapsPath = value;
-                OnPropertyChange("JsonMapsPath");
-            }
-        }
+
+                //mod config prop
         private bool lapModeActive = false;
         public bool LapModeActive
         {
@@ -94,6 +76,70 @@ namespace Sbr.ViewModels
             {
                 lapLimit = value;
                 OnPropertyChange("LapLimit");
+            }
+        }
+
+        private bool surpriseModeActive = false;
+        public bool SurpriseModeActive
+        {
+            get { return surpriseModeActive; }
+            set
+            {
+                surpriseModeActive = value;
+                OnPropertyChange("SurpriseModeActive");
+            }
+        }
+        private byte surpriseSec = 0;
+        public byte SurpriseSec
+        {
+            get { return surpriseSec; }
+            set
+            {
+                surpriseSec = value;
+                OnPropertyChange("SurpriseSec");
+            }
+        }
+
+        private bool eliminateModeActive = false;
+        public bool EliminateModeActive
+        {
+            get { return eliminateModeActive; }
+            set
+            {
+                eliminateModeActive = value;
+                OnPropertyChange("EliminateModeActive");
+            }
+        }
+        private byte eliminateSec = 0;
+        public byte EliminateSec
+        {
+            get { return eliminateSec; }
+            set
+            {
+                eliminateSec = value;
+                OnPropertyChange("EliminateSec");
+            }
+        }
+        //end of mod config prop
+
+        private string jsonDriversPath = "";
+        public string JsonDriversPath
+        {
+            get { return jsonDriversPath; }
+            set
+            {
+                jsonDriversPath = value;
+                OnPropertyChange("JsonDriversPath");
+            }
+        }
+        private string jsonMapsPath = "";
+        public string JsonMapsPath
+        {
+            get { return jsonMapsPath; }
+            set
+            {
+                jsonMapsPath = value;
+                OnPropertyChange("JsonMapsPath");
             }
         }
         private string selectedProcess = "";
@@ -121,7 +167,7 @@ namespace Sbr.ViewModels
                         DTChempioship.Stop();
                         if (IsConfigDone)
                         {
-                            Car.modConfig = new ModConfig(LapModeActive, LapLimit, MapList); // setting up mod in static var 
+                            Car.modConfig = new ModConfig(LapModeActive, LapLimit, MapList, EliminateModeActive, EliminateSec, SurpriseModeActive, SurpriseSec); // setting up mod in static var 
                             DTStandard.Start();
                         }
                         break;

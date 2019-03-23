@@ -34,7 +34,9 @@
                         <RowDefinition Height="55"/>
                         <RowDefinition Height="25"/>
                         <RowDefinition Height="25"/>
-                        <RowDefinition Height="1000"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="950"/>
                     </Grid.RowDefinitions>
 
                     <Label Content="Select DD2 process:" VerticalAlignment="Center" Grid.Row="0"/>
@@ -54,6 +56,14 @@
                     <StackPanel  Grid.Row="5" Orientation="Horizontal">
                         <CheckBox x:Name="lapnumbercheck" IsChecked="{Binding LapModeActive, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True}" Content="Lap Mod" Height="15" Width="100"/>
                         <TextBox x:Name="lapnumber" Text="{Binding LapLimit, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True}" Height="20" Width="30"/>
+                    </StackPanel>
+                    <StackPanel  Grid.Row="6" Orientation="Horizontal">
+                        <CheckBox x:Name="eliminateracecheck" IsChecked="{Binding EliminateModeActive, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True}" Content="Eliminate race" Height="15" Width="100"/>
+                        <TextBox x:Name="eliminatesec" Text="{Binding EliminateSec, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True}" Height="20" Width="30"/>
+                    </StackPanel>
+                    <StackPanel  Grid.Row="7" Orientation="Horizontal">
+                        <CheckBox x:Name="surpriseracecheck" IsChecked="{Binding SurpriseModeActive, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True}" Content="Surprise race" Height="15" Width="100"/>
+                        <TextBox x:Name="surprisesec" Text="{Binding SurpriseSec, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True}" Height="20" Width="30"/>
                     </StackPanel>
                 </Grid>
             </TabItem>

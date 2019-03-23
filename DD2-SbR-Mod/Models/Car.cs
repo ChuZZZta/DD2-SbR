@@ -33,6 +33,8 @@ namespace Sbr.Models
 
         public static ModConfig modConfig;
 
+        IMemoryRW rw;
+
         //memories variables
         public int LapNumber { get; set; } = 1;
         public int Distance { get; set; } = 1;
@@ -66,33 +68,18 @@ namespace Sbr.Models
 
         public void Update()
         {
-            IMemoryRW rw = new MemoryRW(Processname);
+            rw = new MemoryRW(Processname);
             PositionRead = rw.GetByte(RaceMemoryAddress - 0x6);
             Distance = rw.GetByte(RaceMemoryAddress + 0x2);
             UpdateDamage();
-            int mapId = 0;
-            if (modConfig.lapModConfig)
-            {
-                mapId = rw.GetByte(Map.SelectedMapAddress);
-                if( rw.GetByte(RaceMemoryAddress) > 1 && LapNumber != modConfig.lapLimit)
-                    {
-                        LapNumber++;
-                        rw.SetByte(RaceMemoryAddress, 1);
-                    }
-                if(LapNumber == modConfig.lapLimit)
-                    {
-                        rw.SetByte(RaceMemoryAddress, modConfig.MapList[mapId].LapsNumber);
-                    }
-            }
-            else
-            {
-                LapNumber = rw.GetByte(RaceMemoryAddress);
-            }
+
+            ReadLapNumber(modConfig.lapModConfig);
+
             SortByLapDis = LapNumber + ((double)Distance / 1000);
         }
         public void UpdateChampionship()
         {
-            IMemoryRW rw = new MemoryRW(Processname);
+            rw = new MemoryRW(Processname);
             PositionRead = rw.GetByte(RaceMemoryAddress - 0x6);
             TotalChempScore = rw.GetByte(ChempionshipMemoryAddress);
             PrevChempScore = rw.GetByte(ChempionshipMemoryAddress + 0xC);
@@ -116,6 +103,28 @@ namespace Sbr.Models
             RearRight = DamageModel.GetRearRight();
             SideRight = DamageModel.GetSideRight();
             SideLeft = DamageModel.GetSideLeft();
+        }
+
+        private void ReadLapNumber(bool lapmode)
+        {
+            int mapId = 0;
+            if (lapmode)
+            {
+                mapId = rw.GetByte(Map.SelectedMapAddress);
+                if (rw.GetByte(RaceMemoryAddress) > 1 && LapNumber != modConfig.lapLimit)
+                {
+                    LapNumber++;
+                    rw.SetByte(RaceMemoryAddress, 1);
+                }
+                if (LapNumber == modConfig.lapLimit - 1)
+                {
+                    rw.SetByte(RaceMemoryAddress, modConfig.MapList[mapId].LapsNumber);
+                }
+            }
+            else
+            {
+                LapNumber = rw.GetByte(RaceMemoryAddress);
+            }
         }
 
         public override string ToString()
