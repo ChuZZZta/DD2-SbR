@@ -1,44 +1,80 @@
 [
   {
-    "Id" : 1,
+    "Id" : 0,
     "MapName": "Pine Hills Raceway",
     "LapsNumber": 10,
-    "Lenght": 4337
+    "Lenght": 4337,
+    "SelectedMapAddress":0x214D7CC
+  },
+  {
+    "Id": 1,
+    "MapName": "Chalk Canyon",
+    "LapsNumber": 5,
+    "Lenght": 7090,
+    "SelectedMapAddress":0x214D7CC
   },
   {
     "Id": 2,
-    "MapName": "Chalk Canyon",
+    "MapName": "S.C.A. Motorplex",
     "LapsNumber": 5,
-    "Lenght": 7090
+    "Lenght": 4475,
+    "SelectedMapAddress":0x214D7CC
   },
   {
     "Id": 3,
-    "MapName": "S.C.A. Motorplex",
-    "LapsNumber": 5,
-    "Lenght": 4475
+    "MapName": "Caprio County Raceway",
+    "LapsNumber": 8,
+    "Lenght": 3788,
+    "SelectedMapAddress":0x214D7CC
   },
   {
     "Id": 4,
-    "MapName": "Caprio County Raceway",
-    "LapsNumber": 8,
-    "Lenght": 3788
+    "MapName": "Black Sail Valley",
+    "LapsNumber": 5,
+    "Lenght": 6377,
+    "SelectedMapAddress":0x214D7CC
   },
   {
     "Id": 5,
-    "MapName": "Black Sail Valley",
-    "LapsNumber": 5,
-    "Lenght": 6377
+    "MapName": "Liberty City",
+    "LapsNumber": 7,
+    "Lenght": 4475,
+    "SelectedMapAddress":0x214D7CC
   },
   {
     "Id": 6,
-    "MapName": "Liberty City",
-    "LapsNumber": 7,
-    "Lenght": 4475
+    "MapName": "Ultimate Destruction",
+    "LapsNumber": 5,
+    "Lenght": 7533,
+    "SelectedMapAddress":0x214D7CC
   },
   {
     "Id": 7,
-    "MapName": "Ultimate Destruction",
-    "LapsNumber": 5,
-    "Lenght": 7533
+    "MapName": "Red Pike Arena",
+    "LapsNumber": 0,
+    "Lenght": 0,
+    "SelectedMapAddress":0x214D7CC
+  },
+  {
+    "Id": 8,
+    "MapName": "The Colosseum",
+    "LapsNumber": 0,
+    "Lenght": 0,
+    "SelectedMapAddress":0x214D7CC
+  },
+  {
+    "Id": 9,
+    "MapName": "The Pit",
+    "LapsNumber": 0,
+    "Lenght": 0,
+    "SelectedMapAddress":0x214D7CC
+  },
+  {
+    "Id": 10,
+    "MapName": "Death Bowl",
+    "LapsNumber": 0,
+    "Lenght": 0,
+    "SelectedMapAddress":0x214D7CC
   }
+
 ]

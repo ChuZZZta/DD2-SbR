@@ -106,16 +106,6 @@ namespace Sbr.ViewModels
                 OnPropertyChange("SelectedProcess");
             }
         }
-        private Map selectedMap;
-        public Map SelectedMap
-        {
-            get { return selectedMap; }
-            set
-            {
-                selectedMap = value;
-                OnPropertyChange("SelectedMap");
-            }
-        }
         public int SelectedTabIndex
         {
             set
@@ -131,7 +121,7 @@ namespace Sbr.ViewModels
                         DTChempioship.Stop();
                         if (IsConfigDone)
                         {
-                            Car.modConfig = new ModConfig(LapLimit, LapModeActive, SelectedMap); // setting up mod in static var 
+                            Car.modConfig = new ModConfig(LapModeActive, LapLimit, MapList); // setting up mod in static var 
                             DTStandard.Start();
                         }
                         break;
@@ -157,7 +147,7 @@ namespace Sbr.ViewModels
         public List<string> ProcessesList { get; set; } = new List<string>();
         public List<string> DriverJsonList { get; set; } = new List<string>();
         public List<string> MapJsonList { get; set; } = new List<string>();
-        public ObservableCollection<Map> MapList { get; set; } = new ObservableCollection<Map>();
+        public List<Map> MapList { get; set; } = new List<Map>();
 
         public List<Car> CarList { get; set; } = new List<Car>();
 

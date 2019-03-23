@@ -13,7 +13,9 @@ namespace Sbr.Models.ScoreSystems
             this.CarList = CarList;
         }
 
+
         public List<Car> CarList { get; set; } = new List<Car>();
+        
 
         public void UpdateStandard()
         {

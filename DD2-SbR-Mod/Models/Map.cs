@@ -17,6 +17,9 @@ namespace Sbr.Models
         public int Lenght { get; set; }
         [JsonProperty("LapsNumber")]
         public int LapsNumber { get; set; }
+        [JsonProperty("SelectedMapAddress")]
+        public static int SelectedMapAddress { get; set; }
+
 
         public override string ToString()
         {

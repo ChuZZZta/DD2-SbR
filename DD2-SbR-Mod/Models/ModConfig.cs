@@ -11,13 +11,13 @@ namespace Sbr.Models
         //lapmode
         public bool lapModConfig = false;
         public byte lapLimit = 0;
-        public Map map;
+        public List<Map> MapList = new List<Map>();
 
-        public ModConfig(byte lapLimit, bool lapModConfig, Map map)
+        public ModConfig(bool lapModConfig, byte lapLimit, List<Map> MapList)
         {
             this.lapLimit = lapLimit;
             this.lapModConfig = lapModConfig;
-            this.map = map;
+            this.MapList = MapList;
         }
     }
 }

@@ -70,8 +70,10 @@ namespace Sbr.Models
             PositionRead = rw.GetByte(RaceMemoryAddress - 0x6);
             Distance = rw.GetByte(RaceMemoryAddress + 0x2);
             UpdateDamage();
+            int mapId = 0;
             if (modConfig.lapModConfig)
             {
+                mapId = rw.GetByte(Map.SelectedMapAddress);
                 if( rw.GetByte(RaceMemoryAddress) > 1 && LapNumber != modConfig.lapLimit)
                     {
                         LapNumber++;
@@ -79,7 +81,7 @@ namespace Sbr.Models
                     }
                 if(LapNumber == modConfig.lapLimit)
                     {
-                        rw.SetByte(RaceMemoryAddress, modConfig.map.LapsNumber);
+                        rw.SetByte(RaceMemoryAddress, modConfig.MapList[mapId].LapsNumber);
                     }
             }
             else
