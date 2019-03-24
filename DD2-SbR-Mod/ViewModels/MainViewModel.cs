@@ -162,6 +162,8 @@ namespace Sbr.ViewModels
                         IsConfigDone = false;
                         DTStandard.Stop();
                         DTChempioship.Stop();
+                        standSystem.eliminateCounter = 10;
+                        standSystem.surpriseCounter = 10;
                         break;
                     case 1:
                         DTChempioship.Stop();
