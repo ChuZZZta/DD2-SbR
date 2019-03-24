@@ -120,6 +120,26 @@ namespace Sbr.ViewModels
                 OnPropertyChange("EliminateSec");
             }
         }
+        private bool hardcoreModeActive = false;
+        public bool HardcoreModeActive
+        {
+            get { return hardcoreModeActive; }
+            set
+            {
+                hardcoreModeActive = value;
+                OnPropertyChange("HardcoreModeActive");
+            }
+        }
+        private byte hardcorepercent = 0;
+        public byte Hardcorepercent
+        {
+            get { return hardcorepercent; }
+            set
+            {
+                hardcorepercent = value;
+                OnPropertyChange("Hardcorepercent");
+            }
+        }
         //end of mod config prop
 
         private string jsonDriversPath = "";
@@ -169,7 +189,7 @@ namespace Sbr.ViewModels
                         DTChempioship.Stop();
                         if (IsConfigDone)
                         {
-                            Car.ModConfig = new ModConfig(LapModeActive, LapLimit, MapList, EliminateModeActive, EliminateSec, SurpriseModeActive, SurpriseSec); // setting up mod in static var 
+                            Car.ModConfig = new ModConfig(LapModeActive, LapLimit, MapList, EliminateModeActive, EliminateSec, SurpriseModeActive, SurpriseSec, HardcoreModeActive, Hardcorepercent); // setting up mod in static var 
                             DTStandard.Start();
                         }
                         break;

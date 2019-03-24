@@ -27,9 +27,30 @@ namespace Sbr.Models.ScoreSystems
 
             if (Car.ModConfig.eliminateModConfig) EliminateRace();
             if (Car.ModConfig.surpriseModConfig) SurpriseRace();
+            if (Car.ModConfig.hardcoreModeActive) HardcoreRace();
 
             CarList = CarList.OrderByDescending(x => x.SortByLapDis).ToList();
             for (int i = 0; i < 20; i++) CarList[i].Position = i + 1;
+        }
+
+        void HardcoreRace()
+        {
+            if(CarList[0].SideLeft < Car.ModConfig.hardcorepercent)
+            {
+                foreach (Car car in CarList)
+                {
+                    car.DamageModel.SetFrontLeft(Car.ModConfig.hardcorepercent);
+                    car.DamageModel.SetFrontRight(Car.ModConfig.hardcorepercent);
+
+                    car.DamageModel.SetSideLeft(Car.ModConfig.hardcorepercent);
+                    car.DamageModel.SetSideRight(Car.ModConfig.hardcorepercent);
+
+                    car.DamageModel.SetRearLeft(Car.ModConfig.hardcorepercent);
+                    car.DamageModel.SetRearRight(Car.ModConfig.hardcorepercent);
+                }
+
+            }
+            foreach(Car car in CarList) car.DamageModel.BreakRadiator(false); 
         }
 
         void SurpriseRace()
@@ -75,7 +96,7 @@ namespace Sbr.Models.ScoreSystems
                         }
                         break;
                     case 2: //STERRING POWER
-                        Value = Rnd.Next(0, 2);
+                        Value = Rnd.Next(0, 3);
                         SurpriceInfo += "steering power set [0-2]: " + Value;
                         CarList[Target].DamageModel.SetPowerSter(Value);
                         break;
@@ -109,7 +130,7 @@ namespace Sbr.Models.ScoreSystems
             }
             else
             {
-                SurpriceInfo = "Next suprise in... " + surpriseCounter;
+                SurpriceInfo = "Next surprise in... " + surpriseCounter;
                 surpriseCounter--;
             }
             Console.WriteLine(SurpriceInfo);
