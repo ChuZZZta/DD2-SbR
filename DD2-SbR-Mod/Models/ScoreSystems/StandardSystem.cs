@@ -34,7 +34,6 @@ namespace Sbr.Models.ScoreSystems
 
         void SurpriseRace()
         {
-            surpriseCounter--;
             if (surpriseCounter == 0)
             {
                 int Target = Rnd.Next(0, 19);
@@ -111,6 +110,7 @@ namespace Sbr.Models.ScoreSystems
             else
             {
                 SurpriceInfo = "Next suprise in... " + surpriseCounter;
+                surpriseCounter--;
             }
             Console.WriteLine(SurpriceInfo);
         }
@@ -125,9 +125,12 @@ namespace Sbr.Models.ScoreSystems
                 eliminateIndeks--;
                 eliminateCounter = Car.ModConfig.eliminateSec;
             }
-            else Console.WriteLine("Next elimination in... "+ eliminateCounter);
-            eliminateCounter--;
-            if(CarList[0].LapNumber==0)
+            else
+            {
+                Console.WriteLine("Next elimination in... " + eliminateCounter);
+                eliminateCounter--;
+            }
+                if (CarList[0].LapNumber==0)
             {
                 eliminateIndeks = 19;
                 eliminateCounter = 10;

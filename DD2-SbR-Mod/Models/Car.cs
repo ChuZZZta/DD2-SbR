@@ -32,7 +32,7 @@ namespace Sbr.Models
         private static List<int> ScorePoints = new List<int>() { 999,100,75,50,40,35,30,25,20,15,10,9,8,7,6,5,4,3,2,1,0};
 
         public static ModConfig ModConfig;
-
+        private int PrevDistance = 0;
         IMemoryRW rw;
 
         //memories variables
@@ -111,14 +111,18 @@ namespace Sbr.Models
             if (lapmode)
             {
                 mapId = rw.GetByte(Map.SelectedMapAddress);
-                if (rw.GetByte(RaceMemoryAddress) > 1 && LapNumber != ModConfig.lapLimit)
-                {
-                    LapNumber++;
-                    rw.SetByte(RaceMemoryAddress, 1);
-                }
-                if (LapNumber == ModConfig.lapLimit - 1)
+                if(LapNumber >= ModConfig.lapLimit)
                 {
                     rw.SetByte(RaceMemoryAddress, ModConfig.MapList[mapId].LapsNumber);
+                }
+                else
+                {
+                    if (PrevDistance > Distance)
+                    {
+                        LapNumber++;
+                        rw.SetByte(RaceMemoryAddress, 1);
+                    }
+                    PrevDistance = Distance;
                 }
             }
             else
