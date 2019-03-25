@@ -326,19 +326,43 @@ namespace Sbr.ViewModels
         //Timers methods
         private void UpdateStandard(object sender, EventArgs e)
         {
-
-            standSystem.UpdateStandard();
-            CarList = standSystem.CarList;
-            
+            try
+            { 
+                standSystem.UpdateStandard();
+                CarList = standSystem.CarList;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Problem has occured!!!");
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+                Console.WriteLine("Please Check your config");
+                DTChempioship.Stop();
+                DTStandard.Stop();
+                IsConfigDone = false;
+            }
             OnPropertyChange("CarList");
         }
         private void UpdateChampionship(object sender, EventArgs e)
         {
-            champSystem.UpdateChampionship();
-            Division1 = champSystem.Division1;
-            Division2 = champSystem.Division2;
-            Division3 = champSystem.Division3;
-            Division4 = champSystem.Division4;
+            try
+            {
+                champSystem.UpdateChampionship();
+                Division1 = champSystem.Division1;
+                Division2 = champSystem.Division2;
+                Division3 = champSystem.Division3;
+                Division4 = champSystem.Division4;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Problem has occured!!!");
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+                Console.WriteLine("Please Check your config");
+                DTChempioship.Stop();
+                DTStandard.Stop();
+                IsConfigDone = false;
+            }
 
             OnPropertyChange("Division1");
             OnPropertyChange("Division2");
