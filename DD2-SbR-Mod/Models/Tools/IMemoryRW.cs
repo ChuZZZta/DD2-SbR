@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sbr.Models
+namespace Sbr.Models.Tools
 {
     public interface IMemoryRW
     {
