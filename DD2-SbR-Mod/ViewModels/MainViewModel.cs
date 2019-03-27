@@ -2,7 +2,9 @@
 using Newtonsoft.Json;
 using Sbr.Models;
 using Sbr.Models.ScoreSystems;
+using Sbr.Models.Tools;
 using Sbr.ViewModels.Commands;
+using Sbr.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,6 +17,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
+using Point = GameOverlay.Drawing.Point;
 
 namespace Sbr.ViewModels
 {
@@ -140,6 +143,16 @@ namespace Sbr.ViewModels
                 OnPropertyChange("Hardcorepercent");
             }
         }
+        private bool overlayActive = false;
+        public bool OverlayActive
+        {
+            get { return overlayActive; }
+            set
+            {
+                overlayActive = value;
+                OnPropertyChange("HardcoreModeActive");
+            }
+        }
         //end of mod config prop
 
         private string jsonDriversPath = "";
@@ -182,6 +195,7 @@ namespace Sbr.ViewModels
                         IsConfigDone = false;
                         DTStandard.Stop();
                         DTChempioship.Stop();
+                        if(Overlay != null)Overlay.Stop(); // OVERLAY
                         standSystem.eliminateCounter = 10;
                         standSystem.surpriseCounter = 10;
                         break;
@@ -191,6 +205,11 @@ namespace Sbr.ViewModels
                         {
                             Car.ModConfig = new ModConfig(LapModeActive, LapLimit, MapList, EliminateModeActive, EliminateSec, SurpriseModeActive, SurpriseSec, HardcoreModeActive, Hardcorepercent); // setting up mod in static var 
                             DTStandard.Start();
+                            if (overlayActive)
+                            {
+                                OverlayInitialization(); //OVERLAY
+                                Overlay.Run();
+                            }
                         }
                         break;
                     case 2:
@@ -209,6 +228,9 @@ namespace Sbr.ViewModels
         //Variables
 
         private bool IsConfigDone = false;
+
+        WindowOverlay Overlay; //OVERLAY
+         
 
         //Binded Lists
 
@@ -321,7 +343,15 @@ namespace Sbr.ViewModels
             {
                 MapList.Add(map);
             }
-
+        }
+        private void OverlayInitialization() //OVERLAY
+        {
+            IntPtr Window = Process.GetProcessesByName(Car.Processname)[0].MainWindowHandle;
+            WindowDimensions WinDim = new WindowDimensions();
+            Point LapPos = WinDim.GetLapPoint(Window);
+            Point PosPos = WinDim.GetPositionPoint(Window);
+            Point InfoPos = WinDim.GetInfoPoint(Window);
+            Overlay = new WindowOverlay(Window, LapPos, PosPos, InfoPos);
         }
         //Timers methods
         private void UpdateStandard(object sender, EventArgs e)
@@ -330,6 +360,7 @@ namespace Sbr.ViewModels
             { 
                 standSystem.UpdateStandard();
                 CarList = standSystem.CarList;
+                if (overlayActive) Overlay.SetDrawingText(CarList.Single(x => x.Id == 0).LapNumber, CarList.Single(x => x.Id == 0).Position,Car.ModConfig.lapLimit,standSystem.ConsoleInfo); //OVERLAY
             }
             catch(Exception ex)
             {

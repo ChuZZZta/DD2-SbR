@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Point = GameOverlay.Drawing.Point;
 
 namespace Sbr.Models.Tools
 {
@@ -22,31 +23,36 @@ namespace Sbr.Models.Tools
             public int Bottom { get; set; }
         }
 
-        public int GetWindowHeight(string processname)
+        public int GetWindowHeight(IntPtr ProcessWindow)
         {
             RectangleStruct Window = new RectangleStruct();
-            GetWindowRect(Process.GetProcessesByName(processname)[0].MainWindowHandle, ref Window);
+            GetWindowRect(ProcessWindow, ref Window);
             return Math.Abs(Window.Bottom - Window.Top);
         }
 
-        public int GetWindowWidth(string processname)
+        public int GetWindowWidth(IntPtr ProcessWindow)
         {
             RectangleStruct Window = new RectangleStruct();
-            GetWindowRect(Process.GetProcessesByName(processname)[0].MainWindowHandle, ref Window);
+            GetWindowRect(ProcessWindow, ref Window);
             return Math.Abs(Window.Right - Window.Left);
         }
 
-        public Point GetLapPoint(string processname)
+        public Point GetLapPoint(IntPtr ProcessWindow)
         {
-            Point LapPos = new Point();
+            Point LapPos = new Point(Convert.ToInt32(GetWindowHeight(ProcessWindow) * 0.19), Convert.ToInt32(GetWindowWidth(ProcessWindow) * 0.63));
             return LapPos;
         }
 
-        public Point GetPositionPoint(string processname)
+        public Point GetPositionPoint(IntPtr ProcessWindow)
         {
-            Point PositionPos = new Point();
+            Point PositionPos = new Point(Convert.ToInt32(GetWindowHeight(ProcessWindow) * 0.12), Convert.ToInt32(GetWindowWidth(ProcessWindow) * 0.45));
 
             return PositionPos;
+        }
+        public Point GetInfoPoint(IntPtr ProcessWindow)
+        {
+            Point InfoPos = new Point(Convert.ToInt32(GetWindowHeight(ProcessWindow) * 0.91), Convert.ToInt32(GetWindowWidth(ProcessWindow) * 0.10));
+            return InfoPos;
         }
     }
 }

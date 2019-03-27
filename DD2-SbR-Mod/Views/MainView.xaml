@@ -37,6 +37,7 @@
                         <RowDefinition Height="25"/>
                         <RowDefinition Height="25"/>
                         <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
                         <RowDefinition Height="925"/>
                     </Grid.RowDefinitions>
 
@@ -73,6 +74,10 @@
                         <CheckBox x:Name="hardcoreracecheck" IsChecked="{Binding HardcoreModeActive, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True}" Content="Hardcore race" Height="15" Width="100"/>
                         <TextBox x:Name="hardcoreracedamage" Text="{Binding Hardcorepercent, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True}" Height="20" Width="30"/>
                         <Label Content="The mod is setting start damage to all cars provided in user input (in percent)." VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel  Grid.Row="9" Orientation="Horizontal">
+                        <CheckBox x:Name="overlaycheck" IsChecked="{Binding OverlayActive, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True}" Content="Overlay mod" Height="15" Width="100"/>
+                        <Label Content="The mod actives a overlay which corrects lap mod erros." VerticalAlignment="Center"/>
                     </StackPanel>
                 </Grid>
             </TabItem>

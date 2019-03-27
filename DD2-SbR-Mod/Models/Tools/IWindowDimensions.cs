@@ -4,14 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Point = GameOverlay.Drawing.Point;
 
 namespace Sbr.Models.Tools
 {
     public interface IWindowDimensions
     {
-        int GetWindowHeight(string processname);
-        int GetWindowWidth(string processname);
-        Point GetPositionPoint(string processname);
-        Point GetLapPoint(string processname);
+        int GetWindowHeight(IntPtr ProcessWindow);
+        int GetWindowWidth(IntPtr ProcessWindow);
+        Point GetPositionPoint(IntPtr ProcessWindow);
+        Point GetLapPoint(IntPtr ProcessWindow);
+        Point GetInfoPoint(IntPtr ProcessWindow);
     }
 }

@@ -16,7 +16,7 @@ namespace Sbr.Models.ScoreSystems
         Random Rnd = new Random();
         public List<Car> CarList { get; set; } = new List<Car>();
         public int surpriseCounter = 10;
-        string SurpriceInfo = "";
+        public string ConsoleInfo = "";
 
         public int eliminateCounter = 10;
         int eliminateIndeks = 19;
@@ -59,7 +59,7 @@ namespace Sbr.Models.ScoreSystems
             {
                 int Target = Rnd.Next(0, 19);
                 int Value = 0;
-                SurpriceInfo = "Car " + CarList[Target].Number + " " + CarList[Target].Name + " gets: ";
+                ConsoleInfo = "Car " + CarList[Target].Number + " " + CarList[Target].Name + " gets: ";
                 switch (Rnd.Next(1, 6)) // choosing surprice
                 {
                     case 1: //DAMAGE CAR
@@ -67,73 +67,73 @@ namespace Sbr.Models.ScoreSystems
                         switch (Rnd.Next(1, 7)) // choosing side to damage
                         {
                             case 1:
-                                SurpriceInfo += "front left damage set: " + Value;
+                                ConsoleInfo += "front left damage set: " + Value;
                                 CarList[Target].DamageModel.SetFrontLeft(Value);
                                 break;
                             case 2:
-                                SurpriceInfo += "front right damage set: " + Value;
+                                ConsoleInfo += "front right damage set: " + Value;
                                 CarList[Target].DamageModel.SetFrontRight(Value);
                                 break;
                             case 3:
-                                SurpriceInfo += "side left damage set: " + Value;
+                                ConsoleInfo += "side left damage set: " + Value;
                                 CarList[Target].DamageModel.SetSideLeft(Value);
                                 break;
                             case 4:
-                                SurpriceInfo += "side right damage set: " + Value;
+                                ConsoleInfo += "side right damage set: " + Value;
                                 CarList[Target].DamageModel.SetSideRight(Value);
                                 break;
                             case 5:
-                                SurpriceInfo += "rear left damage set: " + Value;
+                                ConsoleInfo += "rear left damage set: " + Value;
                                 CarList[Target].DamageModel.SetRearLeft(Value);
                                 break;
                             case 6:
-                                SurpriceInfo += "rear right damage set: " + Value;
+                                ConsoleInfo += "rear right damage set: " + Value;
                                 CarList[Target].DamageModel.SetRearRight(Value);
                                 break;
                             default:
-                                SurpriceInfo = "";
+                                ConsoleInfo = "";
                                 break;
                         }
                         break;
                     case 2: //STERRING POWER
                         Value = Rnd.Next(0, 3);
-                        SurpriceInfo += "steering power set [0-2]: " + Value;
+                        ConsoleInfo += "steering power set [0-2]: " + Value;
                         CarList[Target].DamageModel.SetPowerSter(Value);
                         break;
                     case 3: //STERRING ISSUE
                         Value = Rnd.Next(-256, 256);
-                        SurpriceInfo += "steering issue set [-256-256]: " + Value;
+                        ConsoleInfo += "steering issue set [-256-256]: " + Value;
                         CarList[Target].DamageModel.SetSterIssue(Value);
                         break;
                     case 4: //Bonus lap
                         if (Rnd.Next(0, 2) == 0)
                         {
                             CarList[Target].LapNumber--;
-                            SurpriceInfo += "minus 1 lap";
+                            ConsoleInfo += "minus 1 lap";
                         }
                         else
                         {
                             CarList[Target].LapNumber++;
-                            SurpriceInfo += "plus 1 lap";
+                            ConsoleInfo += "plus 1 lap";
                         }
                         break;
                     case 5: //ACC VALUE
                         Value = Rnd.Next(0, 200);
-                        SurpriceInfo += "accelerate power [0-200]: " + Value;
+                        ConsoleInfo += "accelerate power [0-200]: " + Value;
                         CarList[Target].DamageModel.SetAccVal(Value);
                         break;
                     default:
-                        SurpriceInfo = "";
+                        ConsoleInfo = "";
                         break;
                 }
                 surpriseCounter = Car.ModConfig.surpriseSec;
             }
             else
             {
-                SurpriceInfo = "Next surprise in... " + surpriseCounter;
+                ConsoleInfo = "Next surprise in... " + surpriseCounter;
                 surpriseCounter--;
             }
-            Console.WriteLine(SurpriceInfo);
+            Console.WriteLine(ConsoleInfo);
         }
         
 
@@ -142,13 +142,15 @@ namespace Sbr.Models.ScoreSystems
             if (eliminateCounter == 0)
             {
                 CarList[eliminateIndeks].DamageModel.SetFrontRight(100);
-                Console.WriteLine("Car " + CarList[eliminateIndeks].Number + " " + CarList[eliminateIndeks].Name + " is eliminated!!!");
+                ConsoleInfo = "Car " + CarList[eliminateIndeks].Number + " " + CarList[eliminateIndeks].Name + " is eliminated!!!";
+                Console.WriteLine(ConsoleInfo);
                 eliminateIndeks--;
                 eliminateCounter = Car.ModConfig.eliminateSec;
             }
             else
             {
-                Console.WriteLine("Next elimination in... " + eliminateCounter);
+                ConsoleInfo = "Next elimination in... " + eliminateCounter;
+                Console.WriteLine(ConsoleInfo);
                 eliminateCounter--;
             }
                 if (CarList[0].LapNumber==0)
