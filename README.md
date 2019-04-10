@@ -33,23 +33,25 @@ modes.
 
 ### Supported versions
 ##### Current support
-- Windows 7 or newer (to run DD2 on newer systems than Windows 98 you need to have a special exe version, check my youtube channel for more info. I am planning to upload a tutorial for getting one)
+- Play Station emulation (Mednafen 1.21.3 (NA version))
 
-##### Planed future support (work in progress)
-- DosBox emulation (DOSBox)
-- Play Station emulation (ePSX)
+##### Planed future support
+- DosBox emulation (DOSBox) - There is problem with NOCD version of this game so i don't want to touch this platform.
+
+##### Suspended support
+- Play Station emulation (ePSX) - I found that mednafen may be better for this mod
+- Windows 7 - Game is very unstable on this OS
 
 ##### "I wanna to support other version"
 
-Supporting other versions means getting a correct memory addresses for date (using for example programs such as CheatEngine) and providing that data to JSON driver config. You can play if you want, memory addresses in that file are for **position** of a driver and other addresses are calculated inside a DD2-SBR. If offsets do not match, then unfortunately the only option to make it work is hard code it.
-In future I will post youtube video how to make it so once again check my youtube channel for more info.
+Supporting other versions means getting a correct memory addresses for data (using for example programs such as CheatEngine) and providing that data to JSON driver config.
+In future I will post youtube video how to provide support for other version but for now it is not my priority, so sorry. :)
 
 ------------
 
 
 ### Current release
-##### Sorry, the app is still in development and I cannot provide a working version yet.
-###### Planning release date: second quoter of 2019
+##### Sorry, the development of this app is currently suspended. Maybe i will come back to work on it or rewriting it completely. :)
 
 ------------
 
@@ -58,10 +60,8 @@ In future I will post youtube video how to make it so once again check my youtub
 Too many to list them all but i will try... ;)
 
 - The scoreboard may be flickering a bit (due to low refresh rate, it refreshes only once per second)
-- Ingame score is totally random (prbly cannot fix it, i will try to apply some overlay or smt in the future)
-- Loooooots of app crashes (no exception mechanics)
 - Motorplex map is not supported
--  Unfortunately, many others
+- Some random crashes due to not user friendly interface ;)
 
 ------------
 
@@ -71,6 +71,8 @@ Too many to list them all but i will try... ;)
 Name  |Author| Source
 ------------- | ------------- | -------------
 Json.NET  |JamesNK| https://github.com/JamesNK/Newtonsoft.Json
+GameOverlay.Net|michel-pi|https://github.com/michel-pi/GameOverlay.Net
+nexus,dotwarp |tgjones |https://github.com/tgjones/nexus , https://github.com/tgjones/dotwarp
 
 ##### Other materials
 Name  |Author| Source
